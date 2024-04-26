@@ -1,4 +1,4 @@
-package br.com.fiap.fiapfood.infrastructure.entity;
+package br.com.fiap.fiapfood.domain.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
