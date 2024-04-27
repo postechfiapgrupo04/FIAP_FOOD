@@ -36,6 +36,10 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
     public void deletar(Long id) {
 
         Optional<UsuarioEntity> usuario = jpaUsuarioRepository.findById(id);
+        if (usuario.isPresent()) {
+            jpaUsuarioRepository.delete(usuario.get());
+            return;
+        }
         usuario.ifPresent(jpaUsuarioRepository::delete);
         throw new RuntimeException("Usuário não encontrado");
 

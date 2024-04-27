@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Table(
         name = "usuario"
-        , uniqueConstraints = {@UniqueConstraint(name = "UK_USER", columnNames = {"name", "email", "cpf"})}
+        , uniqueConstraints = {@UniqueConstraint(name = "UK_USER", columnNames = {"nome", "email", "cpf"})}
 )
 @NoArgsConstructor
 public class UsuarioEntity {
