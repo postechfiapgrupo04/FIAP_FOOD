@@ -5,6 +5,8 @@ import br.com.fiap.fiapfood.application.usecase.UsuarioUsecase;
 import br.com.fiap.fiapfood.domain.model.UsuarioEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class UsuarioUseCaseImp implements UsuarioUsecase {
 
@@ -25,7 +27,17 @@ public class UsuarioUseCaseImp implements UsuarioUsecase {
     }
 
     @Override
+    public List<UsuarioEntity> findAll() {
+        return usuarioRepositoryImp.findAll();
+    }
+
+    @Override
     public void deletar(Long id) {
         usuarioRepositoryImp.deletar(id);
+    }
+
+    @Override
+    public UsuarioEntity findByCpf(String cpf) {
+        return usuarioRepositoryImp.findByCpf(cpf);
     }
 }

@@ -6,6 +6,8 @@ import br.com.fiap.fiapfood.presentation.dto.UsuarioDTO;
 import br.com.fiap.fiapfood.presentation.mapper.UsuarioMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -29,6 +31,21 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public UsuarioDTO buscarPorId(@PathVariable String id) {
         UsuarioEntity usuarioEntity = usuarioUseCase.buscarPorId(id);
+        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioEntity);
+    }
+
+
+    @GetMapping
+    public List<UsuarioDTO> findAll() {
+        return usuarioUseCase.findAll()
+                .stream()
+                .map(UsuarioMapper.INSTANCE::toUsuarioDTO)
+                .toList();
+    }
+
+    @GetMapping("/cpf")
+    public UsuarioDTO findByCpf(@RequestParam("cpf") String cpf){
+        UsuarioEntity usuarioEntity = usuarioUseCase.findByCpf(cpf);
         return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioEntity);
     }
 

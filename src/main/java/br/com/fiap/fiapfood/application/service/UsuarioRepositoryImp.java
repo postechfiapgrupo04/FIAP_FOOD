@@ -5,6 +5,7 @@ import br.com.fiap.fiapfood.domain.repository.UsuarioRepository;
 import br.com.fiap.fiapfood.infrastructure.persistence.JpaUsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,6 +34,12 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
     }
 
     @Override
+    public List<UsuarioEntity> findAll() {
+        List<UsuarioEntity> usuarioEntityList = jpaUsuarioRepository.findAll();
+        return usuarioEntityList;
+    }
+
+    @Override
     public void deletar(Long id) {
 
         Optional<UsuarioEntity> usuario = jpaUsuarioRepository.findById(id);
@@ -44,5 +51,11 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
         throw new RuntimeException("Usuário não encontrado");
 
     }
+
+    @Override
+    public UsuarioEntity findByCpf(String cpf) {
+        return jpaUsuarioRepository.findByCpf(cpf);
+    }
+
 
 }
