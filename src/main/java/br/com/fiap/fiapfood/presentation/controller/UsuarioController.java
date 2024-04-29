@@ -1,7 +1,7 @@
 package br.com.fiap.fiapfood.presentation.controller;
 
-import br.com.fiap.fiapfood.application.usecase.UsuarioUsecase;
-import br.com.fiap.fiapfood.domain.model.UsuarioEntity;
+import br.com.fiap.fiapfood.domain.usecase.UsuarioUsecase;
+import br.com.fiap.fiapfood.domain.model.UsuarioDomain;
 import br.com.fiap.fiapfood.presentation.dto.UsuarioDTO;
 import br.com.fiap.fiapfood.presentation.mapper.UsuarioMapper;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +21,17 @@ public class UsuarioController {
     @PostMapping
     public UsuarioDTO salvar(@RequestBody UsuarioDTO usuarioDTO) {
 
-        UsuarioEntity usuarioEntity1 = UsuarioMapper.INSTANCE.toUsuarioEntity(usuarioDTO);
+        UsuarioDomain usuarioDomain1 = UsuarioMapper.INSTANCE.toUsuarioEntity(usuarioDTO);
 
-        UsuarioEntity usuarioEntity = usuarioUseCase.salvar(UsuarioMapper.INSTANCE.toUsuarioEntity(usuarioDTO));
-        UsuarioDTO usuarioDTO1 = UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioEntity);
-        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioEntity);
+        UsuarioDomain usuarioDomain = usuarioUseCase.salvar(UsuarioMapper.INSTANCE.toUsuarioEntity(usuarioDTO));
+        UsuarioDTO usuarioDTO1 = UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioDomain);
+        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioDomain);
     }
 
     @GetMapping("/{id}")
     public UsuarioDTO buscarPorId(@PathVariable String id) {
-        UsuarioEntity usuarioEntity = usuarioUseCase.buscarPorId(id);
-        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioEntity);
+        UsuarioDomain usuarioDomain = usuarioUseCase.buscarPorId(id);
+        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioDomain);
     }
 
 
@@ -45,8 +45,8 @@ public class UsuarioController {
 
     @GetMapping("/cpf")
     public UsuarioDTO findByCpf(@RequestParam("cpf") String cpf){
-        UsuarioEntity usuarioEntity = usuarioUseCase.findByCpf(cpf);
-        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioEntity);
+        UsuarioDomain usuarioDomain = usuarioUseCase.findByCpf(cpf);
+        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioDomain);
     }
 
     @DeleteMapping("/{id}")

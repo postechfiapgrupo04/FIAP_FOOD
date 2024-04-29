@@ -2,7 +2,7 @@ package br.com.fiap.fiapfood.application.service;
 
 import br.com.fiap.fiapfood.domain.model.RestauranteEntity;
 import br.com.fiap.fiapfood.domain.repository.RestauranteRepository;
-import br.com.fiap.fiapfood.infrastructure.persistence.JpaRestauranteRepository;
+import br.com.fiap.fiapfood.infrastructure.persistence.repository.JpaRestauranteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
