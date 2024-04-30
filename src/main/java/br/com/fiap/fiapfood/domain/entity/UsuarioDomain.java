@@ -1,4 +1,4 @@
-package br.com.fiap.fiapfood.domain.model;
+package br.com.fiap.fiapfood.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

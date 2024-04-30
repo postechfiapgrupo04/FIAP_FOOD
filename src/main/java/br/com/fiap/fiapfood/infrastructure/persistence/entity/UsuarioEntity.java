@@ -30,23 +30,6 @@ public class UsuarioEntity {
     @Column(name = "cpf", nullable = false)
     private String cpf;
 
-    public UsuarioEntity(String nome, String email, String cpf) {
-
-        if (nome.isBlank() || nome.isEmpty()) {
-            throw new RuntimeException("Nome inválido");
-        }
-        if (email.isBlank() || email.isEmpty()) {
-            throw new RuntimeException("Email inválido");
-        }
-        if (cpf.isBlank() || cpf.isEmpty()) {
-            throw new RuntimeException("CPF inválido");
-        }
-
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

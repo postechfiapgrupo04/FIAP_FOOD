@@ -1,8 +1,8 @@
 package br.com.fiap.fiapfood.application.usecase;
 
-import br.com.fiap.fiapfood.domain.repository.UsuarioGateway;
+import br.com.fiap.fiapfood.domain.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.domain.gateway.UsuarioGateway;
 import br.com.fiap.fiapfood.domain.usecase.UsuarioUsecase;
-import br.com.fiap.fiapfood.domain.model.UsuarioDomain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,26 +16,30 @@ public class UsuarioUseCaseImp implements UsuarioUsecase {
 
     @Override
     public UsuarioDomain salvar(UsuarioDomain usuario) {
+
         return usuarioGateway.salvar(usuario);
     }
 
     @Override
-    public UsuarioDomain buscarPorId(String id) {
+    public UsuarioDomain buscarPorId(Long id) {
         return usuarioGateway.buscarPorId(id);
     }
 
     @Override
-    public List<UsuarioDomain> findAll() {
-        return usuarioGateway.findAll();
+    public List<UsuarioDomain> buscarTodos() {
+
+        return usuarioGateway.buscarTodos();
     }
 
     @Override
-    public void deletar(Long id) {
-        usuarioGateway.deletar(id);
+    public void apagar(Long id) {
+
+        usuarioGateway.apagar(id);
     }
 
     @Override
-    public UsuarioDomain findByCpf(String cpf) {
-        return usuarioGateway.findByCpf(cpf);
+    public UsuarioDomain buscarPorCPF(String cpf) {
+
+        return usuarioGateway.buscarPorCPF(cpf);
     }
 }

@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "endereco")
 @NoArgsConstructor
+@AllArgsConstructor
 public class EnderecoEntity {
 
     @Id
@@ -26,16 +28,6 @@ public class EnderecoEntity {
     private String cep;
     @OneToOne(mappedBy = "endereco")
     private RestauranteEntity restaurante;
-
-    public EnderecoEntity(String logradouro, String numero, String complemento, String bairro, String cidade, String estado, String cep) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,12 +1,12 @@
 package br.com.fiap.fiapfood.infrastructure.persistence.repository;
 
-import br.com.fiap.fiapfood.domain.model.RestauranteEntity;
+import br.com.fiap.fiapfood.infrastructure.persistence.entity.RestauranteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
-public interface JpaRestauranteRepository extends JpaRepository<RestauranteEntity, Long>{
+public interface RestauranteRepository extends JpaRepository<RestauranteEntity, Long> {
 
     public Optional<RestauranteEntity> findByNomeIsLike(String nome);
 
