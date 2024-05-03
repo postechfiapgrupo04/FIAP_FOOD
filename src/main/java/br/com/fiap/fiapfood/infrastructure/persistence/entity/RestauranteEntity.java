@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -30,6 +31,9 @@ public class RestauranteEntity {
 
     @OneToOne
     private EnderecoEntity endereco;
+
+    @OneToMany(mappedBy = "restaurante")
+    private List<ReservaEntity> reserva;
 
     @Column(name = "tipocozinha", nullable = false)
     @Enumerated(EnumType.STRING)

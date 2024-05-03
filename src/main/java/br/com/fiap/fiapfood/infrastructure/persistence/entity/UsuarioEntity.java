@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -29,6 +30,9 @@ public class UsuarioEntity {
 
     @Column(name = "cpf", nullable = false)
     private String cpf;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<ReservaEntity> reserva;
 
     @Override
     public boolean equals(Object o) {
