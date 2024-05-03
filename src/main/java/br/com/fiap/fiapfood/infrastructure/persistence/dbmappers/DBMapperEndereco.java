@@ -1,4 +1,4 @@
-package br.com.fiap.fiapfood.infrastructure.persistence.entity;
+package br.com.fiap.fiapfood.infrastructure.persistence.dbmappers;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Objects;
 @Table(name = "endereco")
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnderecoEntity {
+public class DBMapperEndereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +27,12 @@ public class EnderecoEntity {
     private String estado;
     private String cep;
     @OneToOne(mappedBy = "endereco")
-    private RestauranteEntity restaurante;
+    private DBMapperRestaurante restaurante;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof EnderecoEntity that)) return false;
+        if (!(o instanceof DBMapperEndereco that)) return false;
         return Objects.equals(logradouro, that.logradouro) && Objects.equals(numero, that.numero) && Objects.equals(complemento, that.complemento) && Objects.equals(bairro, that.bairro) && Objects.equals(cidade, that.cidade) && Objects.equals(estado, that.estado) && Objects.equals(cep, that.cep);
     }
 

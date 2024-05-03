@@ -1,8 +1,8 @@
-package br.com.fiap.fiapfood.domain.gateway;
+package br.com.fiap.fiapfood.domain.gatewayrepository;
 
 import br.com.fiap.fiapfood.domain.entity.RestauranteDomain;
 
-public interface RestauranteGateway {
+public interface RestauranteGatewayRepository {
 
     public RestauranteDomain salvar(RestauranteDomain restaurante);
 

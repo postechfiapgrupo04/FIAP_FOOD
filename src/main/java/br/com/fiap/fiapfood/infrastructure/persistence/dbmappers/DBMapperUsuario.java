@@ -1,4 +1,4 @@
-package br.com.fiap.fiapfood.infrastructure.persistence.entity;
+package br.com.fiap.fiapfood.infrastructure.persistence.dbmappers;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.Objects;
         , uniqueConstraints = {@UniqueConstraint(name = "UK_USER", columnNames = {"nome", "email", "cpf"})}
 )
 @NoArgsConstructor
-public class UsuarioEntity {
+public class DBMapperUsuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,12 +32,12 @@ public class UsuarioEntity {
     private String cpf;
 
     @OneToMany(mappedBy = "usuario")
-    private List<ReservaEntity> reserva;
+    private List<DBMapperReserva> reserva;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UsuarioEntity usuario)) return false;
+        if (!(o instanceof DBMapperUsuario usuario)) return false;
         return Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(cpf, usuario.cpf);
     }
 

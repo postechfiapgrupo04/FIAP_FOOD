@@ -1,8 +1,8 @@
 package br.com.fiap.fiapfood.infrastructure.persistence.implementation;
 
 import br.com.fiap.fiapfood.domain.entity.RestauranteDomain;
-import br.com.fiap.fiapfood.domain.gateway.RestauranteGateway;
-import br.com.fiap.fiapfood.infrastructure.persistence.entity.RestauranteEntity;
+import br.com.fiap.fiapfood.domain.gatewayrepository.RestauranteGatewayRepository;
+import br.com.fiap.fiapfood.infrastructure.persistence.dbmappers.DBMapperRestaurante;
 import br.com.fiap.fiapfood.infrastructure.persistence.repository.RestauranteRepository;
 import br.com.fiap.fiapfood.presentation.mapper.RestauranteMapper;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Component
 @AllArgsConstructor
-public class RestauranteGatewayImpl implements RestauranteGateway {
+public class RestauranteGatewayRepositoryImpl implements RestauranteGatewayRepository {
 
     private final RestauranteRepository restauranteRepository;
 
@@ -25,7 +25,7 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
     @Override
     public RestauranteDomain buscarPorId(Long id) {
-        Optional<RestauranteEntity> restauranteEntity = restauranteRepository.findById(id);
+        Optional<DBMapperRestaurante> restauranteEntity = restauranteRepository.findById(id);
         if (restauranteEntity.isPresent()) {
             return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
         }
@@ -34,7 +34,7 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
     @Override
     public void apagar(Long id) {
-        Optional<RestauranteEntity> restauranteEntity = restauranteRepository.findById(id);
+        Optional<DBMapperRestaurante> restauranteEntity = restauranteRepository.findById(id);
         if (restauranteEntity.isPresent()) {
             restauranteRepository.delete(restauranteEntity.get());
         }
@@ -43,7 +43,7 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
     @Override
     public RestauranteDomain buscarPorNome(String nome) {
-        Optional<RestauranteEntity> restauranteEntity = restauranteRepository.findByNomeIsLike(nome);
+        Optional<DBMapperRestaurante> restauranteEntity = restauranteRepository.findByNomeIsLike(nome);
         if (restauranteEntity.isPresent()) {
             return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
         }
@@ -52,7 +52,7 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
     @Override
     public RestauranteDomain buscarPorEndereco(String endereco) {
-        Optional<RestauranteEntity> restauranteEntity = restauranteRepository.findByEndereco(endereco);
+        Optional<DBMapperRestaurante> restauranteEntity = restauranteRepository.findByEndereco(endereco);
         if (restauranteEntity.isPresent()) {
             return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
         }
@@ -61,7 +61,7 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
     @Override
     public RestauranteDomain buscarPorTipoCozinha(String tipoCozinha) {
-        Optional<RestauranteEntity> restauranteEntity = restauranteRepository.findByTipoCozinha(tipoCozinha);
+        Optional<DBMapperRestaurante> restauranteEntity = restauranteRepository.findByTipoCozinha(tipoCozinha);
         if (restauranteEntity.isPresent()) {
             return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
         }

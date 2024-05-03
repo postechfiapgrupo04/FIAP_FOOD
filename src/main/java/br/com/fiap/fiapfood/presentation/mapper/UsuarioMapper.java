@@ -1,7 +1,7 @@
 package br.com.fiap.fiapfood.presentation.mapper;
 
 import br.com.fiap.fiapfood.domain.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.infrastructure.persistence.entity.UsuarioEntity;
+import br.com.fiap.fiapfood.infrastructure.persistence.dbmappers.DBMapperUsuario;
 import br.com.fiap.fiapfood.presentation.dto.UsuarioDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -15,7 +15,7 @@ public interface UsuarioMapper {
 
     UsuarioDomain toUsuarioEntity(UsuarioDTO usuarioDTO);
 
-    UsuarioDomain toUsuarioDomain(UsuarioEntity usuarioEntity);
+    UsuarioDomain toUsuarioDomain(DBMapperUsuario DBMapperUsuario);
 
-    UsuarioEntity toUsuarioEntity(UsuarioDomain usuarioDomain);
+    DBMapperUsuario toUsuarioEntity(UsuarioDomain usuarioDomain);
 }

@@ -1,10 +1,10 @@
-package br.com.fiap.fiapfood.domain.gateway;
+package br.com.fiap.fiapfood.domain.gatewayrepository;
 
 import br.com.fiap.fiapfood.domain.entity.UsuarioDomain;
 
 import java.util.List;
 
-public interface UsuarioGateway {
+public interface UsuarioGatewayRepository {
 
     public UsuarioDomain salvar(UsuarioDomain usuario);
 

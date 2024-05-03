@@ -18,17 +18,17 @@ public class ReservaDomain {
     private LocalTime dataReserva;
     private RestauranteDomain restaurante;
     private UsuarioDomain usuario;
+    private int quantidadePessoas;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReservaDomain that = (ReservaDomain) o;
-        return Objects.equals(id, that.id) && Objects.equals(dataReserva, that.dataReserva) && Objects.equals(restaurante, that.restaurante) && Objects.equals(usuario, that.usuario);
+        if (!(o instanceof ReservaDomain that)) return false;
+        return quantidadePessoas == that.quantidadePessoas && Objects.equals(dataReserva, that.dataReserva) && Objects.equals(restaurante, that.restaurante) && Objects.equals(usuario, that.usuario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dataReserva, restaurante, usuario);
+        return Objects.hash(dataReserva, restaurante, usuario, quantidadePessoas);
     }
 }

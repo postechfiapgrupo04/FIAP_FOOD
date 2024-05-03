@@ -1,6 +1,5 @@
-package br.com.fiap.fiapfood.infrastructure.persistence.entity;
+package br.com.fiap.fiapfood.infrastructure.persistence.dbmappers;
 
-import br.com.fiap.fiapfood.domain.enums.TipoCozinha;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +15,7 @@ import java.util.Objects;
 @Table(name = "reserva")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservaEntity {
+public class DBMapperReserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,19 +24,22 @@ public class ReservaEntity {
     @Column(name = "datareserva", nullable = false)
     private LocalTime dataReserva;
 
+    @Column(name = "quantidadepessoas", nullable = false)
+    private int quantidadePessoas;
+
     @ManyToOne
     @JoinColumn(name = "idrestaurante")
-    private RestauranteEntity restaurante;
+    private DBMapperRestaurante restaurante;
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private UsuarioEntity usuario;
+    private DBMapperUsuario usuario;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReservaEntity that = (ReservaEntity) o;
+        DBMapperReserva that = (DBMapperReserva) o;
         return Objects.equals(id, that.id) && Objects.equals(dataReserva, that.dataReserva) && Objects.equals(restaurante, that.restaurante) && Objects.equals(usuario, that.usuario);
     }
 

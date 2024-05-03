@@ -1,4 +1,4 @@
-package br.com.fiap.fiapfood.infrastructure.persistence.entity;
+package br.com.fiap.fiapfood.infrastructure.persistence.dbmappers;
 
 import br.com.fiap.fiapfood.domain.enums.TipoCozinha;
 import jakarta.persistence.*;
@@ -20,7 +20,7 @@ import java.util.Objects;
 )
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestauranteEntity {
+public class DBMapperRestaurante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,10 +30,10 @@ public class RestauranteEntity {
     private String nome;
 
     @OneToOne
-    private EnderecoEntity endereco;
+    private DBMapperEndereco endereco;
 
     @OneToMany(mappedBy = "restaurante")
-    private List<ReservaEntity> reserva;
+    private List<DBMapperReserva> reserva;
 
     @Column(name = "tipocozinha", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -51,7 +51,7 @@ public class RestauranteEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RestauranteEntity that)) return false;
+        if (!(o instanceof DBMapperRestaurante that)) return false;
         return capacidade == that.capacidade && Objects.equals(nome, that.nome) && Objects.equals(endereco, that.endereco) && tipoCozinha == that.tipoCozinha && Objects.equals(horarioFuncionamentoAbertura, that.horarioFuncionamentoAbertura) && Objects.equals(horarioFuncionamentoFechamento, that.horarioFuncionamentoFechamento);
     }
 

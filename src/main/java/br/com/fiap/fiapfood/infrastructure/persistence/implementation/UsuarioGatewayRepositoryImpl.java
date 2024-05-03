@@ -1,8 +1,8 @@
 package br.com.fiap.fiapfood.infrastructure.persistence.implementation;
 
 import br.com.fiap.fiapfood.domain.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.domain.gateway.UsuarioGateway;
-import br.com.fiap.fiapfood.infrastructure.persistence.entity.UsuarioEntity;
+import br.com.fiap.fiapfood.domain.gatewayrepository.UsuarioGatewayRepository;
+import br.com.fiap.fiapfood.infrastructure.persistence.dbmappers.DBMapperUsuario;
 import br.com.fiap.fiapfood.infrastructure.persistence.repository.UsuarioRepository;
 import br.com.fiap.fiapfood.presentation.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class UsuarioGatewayImpl implements UsuarioGateway {
+public class UsuarioGatewayRepositoryImpl implements UsuarioGatewayRepository {
 
 
     UsuarioRepository usuarioRepository;
@@ -26,7 +26,7 @@ public class UsuarioGatewayImpl implements UsuarioGateway {
 
     @Override
     public UsuarioDomain buscarPorId(Long id) {
-        Optional<UsuarioEntity> usuarioEntity = usuarioRepository.findById(id);
+        Optional<DBMapperUsuario> usuarioEntity = usuarioRepository.findById(id);
         if (usuarioEntity.isPresent()) {
             return UsuarioMapper.INSTANCE.toUsuarioDomain(usuarioEntity.get());
         }
@@ -40,7 +40,7 @@ public class UsuarioGatewayImpl implements UsuarioGateway {
 
     @Override
     public void apagar(Long id) {
-        Optional<UsuarioEntity> usuarioEntity = usuarioRepository.findById(id);
+        Optional<DBMapperUsuario> usuarioEntity = usuarioRepository.findById(id);
         if (usuarioEntity.isPresent()) {
             usuarioRepository.delete(usuarioEntity.get());
         }
@@ -49,7 +49,7 @@ public class UsuarioGatewayImpl implements UsuarioGateway {
 
     @Override
     public UsuarioDomain buscarPorCPF(String cpf) {
-        Optional<UsuarioEntity> usuarioEntity = usuarioRepository.findByCpf(cpf);
+        Optional<DBMapperUsuario> usuarioEntity = usuarioRepository.findByCpf(cpf);
         if (usuarioEntity.isPresent()) {
             return UsuarioMapper.INSTANCE.toUsuarioDomain(usuarioEntity.get());
         }
