@@ -1,8 +1,8 @@
 package br.com.fiap.fiapfood.application.usecase;
 
-import br.com.fiap.fiapfood.domain.entity.RestauranteDomain;
-import br.com.fiap.fiapfood.domain.gatewayrepository.RestauranteGatewayRepository;
-import br.com.fiap.fiapfood.domain.usecase.RestauranteUsecase;
+import br.com.fiap.fiapfood.core.domain.entity.RestauranteDomain;
+import br.com.fiap.fiapfood.core.domain.repositories.RestauranteRepository;
+import br.com.fiap.fiapfood.core.domain.usecase.RestauranteUsecase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,35 +10,35 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class RestauranteUseCaseImp implements RestauranteUsecase {
 
-    private final RestauranteGatewayRepository restauranteGatewayRepository;
+    private final RestauranteRepository restauranteRepository;
 
     @Override
     public RestauranteDomain salvar(RestauranteDomain restaurante) {
-        return restauranteGatewayRepository.salvar(restaurante);
+        return restauranteRepository.salvar(restaurante);
     }
 
     @Override
     public RestauranteDomain buscarPorId(Long id) {
-        return restauranteGatewayRepository.buscarPorId(id);
+        return restauranteRepository.buscarPorId(id);
     }
 
     @Override
     public void apagar(Long id) {
-        restauranteGatewayRepository.apagar(id);
+        restauranteRepository.apagar(id);
     }
 
     @Override
     public RestauranteDomain buscarPorNome(String nome) {
-        return restauranteGatewayRepository.buscarPorNome(nome);
+        return restauranteRepository.buscarPorNome(nome);
     }
 
     @Override
     public RestauranteDomain buscarPorEndereco(String endereco) {
-        return restauranteGatewayRepository.buscarPorEndereco(endereco);
+        return restauranteRepository.buscarPorEndereco(endereco);
     }
 
     @Override
     public RestauranteDomain buscarPorTipoCozinha(String tipoCozinha) {
-        return restauranteGatewayRepository.buscarPorTipoCozinha(tipoCozinha);
+        return restauranteRepository.buscarPorTipoCozinha(tipoCozinha);
     }
 }
