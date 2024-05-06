@@ -1,12 +1,12 @@
 package br.com.fiap.fiapfood.application.usecase;
 
-import br.com.fiap.fiapfood.core.domain.entity.ReservaDomain;
-import br.com.fiap.fiapfood.core.domain.entity.RestauranteDomain;
-import br.com.fiap.fiapfood.core.domain.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.core.domain.repositories.ReservaRepository;
-import br.com.fiap.fiapfood.core.domain.repositories.RestauranteRepository;
-import br.com.fiap.fiapfood.core.domain.repositories.UsuarioRepository;
-import br.com.fiap.fiapfood.core.domain.usecase.ReservaUsecase;
+import br.com.fiap.fiapfood.core.entity.ReservaDomain;
+import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
+import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.core.repositories.ReservaRepository;
+import br.com.fiap.fiapfood.core.repositories.RestauranteRepository;
+import br.com.fiap.fiapfood.core.repositories.UsuarioRepository;
+import br.com.fiap.fiapfood.core.usecase.ReservaUsecase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
