@@ -13,9 +13,9 @@ public interface UsuarioMapper {
 
     UsuarioDTO toUsuarioDTO(UsuarioDomain usuarioDomain);
 
-    UsuarioDomain toUsuarioEntity(UsuarioDTO usuarioDTO);
+    UsuarioDomain toUsuarioDomainFromDTO(UsuarioDTO usuarioDTO);
 
     UsuarioDomain toUsuarioDomain(Usuario Usuario);
 
-    Usuario toUsuarioEntity(UsuarioDomain usuarioDomain);
+    Usuario toUsuarioDomainFromDTO(UsuarioDomain usuarioDomain);
 }

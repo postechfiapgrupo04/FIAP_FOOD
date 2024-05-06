@@ -18,6 +18,7 @@ public class UsuarioDomain {
     private String email;
     private String cpf;
 
+    /*
     public UsuarioDomain(String nome, String email, String cpf) {
 
         if (nome.isBlank() || nome.isEmpty()) {
@@ -34,6 +35,7 @@ public class UsuarioDomain {
         this.email = email;
         this.cpf = cpf;
     }
+     */
 
     @Override
     public boolean equals(Object o) {

@@ -16,12 +16,12 @@ import java.util.Optional;
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
 
-    UsuarioJPARepository usuarioJPARepository;
+    private final UsuarioJPARepository usuarioJPARepository;
 
     @Override
     public UsuarioDomain salvar(UsuarioDomain usuario) {
         return UsuarioMapper.INSTANCE.toUsuarioDomain(
-                usuarioJPARepository.save(UsuarioMapper.INSTANCE.toUsuarioEntity(usuario)));
+                usuarioJPARepository.save(UsuarioMapper.INSTANCE.toUsuarioDomainFromDTO(usuario)));
     }
 
     @Override
@@ -35,7 +35,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public List<UsuarioDomain> buscarTodos() {
-        return usuarioJPARepository.findAll().stream().map(UsuarioMapper.INSTANCE::toUsuarioDomain).toList();
+        List<Usuario> usuarios = usuarioJPARepository.findAll();
+        List<UsuarioDomain> usuarioDomains = usuarios
+                .stream()
+                .map(UsuarioMapper.INSTANCE::toUsuarioDomain)
+                .toList();
+        return usuarioDomains;
     }
 
     @Override
