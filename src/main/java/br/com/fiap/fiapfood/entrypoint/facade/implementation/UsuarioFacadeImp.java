@@ -46,6 +46,6 @@ public class UsuarioFacadeImp implements UsuarioFacade {
 
     @Override
     public UsuarioDomain buscarPorCPF(String cpf) {
-        return buscarPorCPF(cpf);
+        return buscarUsuarioPorCPF.call(cpf);
     }
 }
