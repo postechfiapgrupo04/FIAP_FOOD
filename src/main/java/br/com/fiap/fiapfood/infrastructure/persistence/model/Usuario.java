@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.infrastructure.persistence.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,11 +16,13 @@ import java.util.Objects;
         name = "usuario"
         , uniqueConstraints = {@UniqueConstraint(name = "UK_USER", columnNames = {"nome", "email", "cpf"})}
 )
+@AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "nome", nullable = false)
@@ -32,7 +35,7 @@ public class Usuario {
     private String cpf;
 
     @OneToMany(mappedBy = "usuario")
-    private List<Reserva> reserva;
+    private List<Reserva> reservas;
 
     @Override
     public boolean equals(Object o) {

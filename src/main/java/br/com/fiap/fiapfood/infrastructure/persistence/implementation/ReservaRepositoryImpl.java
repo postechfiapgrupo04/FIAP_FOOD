@@ -49,7 +49,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
     @Override
     public List<ReservaDomain> buscarPorUsuario(UsuarioDomain usuario) {
-        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByUsuario(UsuarioMapper.INSTANCE.toUsuarioDomainFromDTO(usuario));
+        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByUsuario(UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuario));
         if (reservaEntities.isPresent()) {
             return reservaEntities.get().stream().map(ReservaMapper.INSTANCE::toReservaDomain).toList();
         }

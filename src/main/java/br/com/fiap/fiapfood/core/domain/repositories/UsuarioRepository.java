@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface UsuarioRepository {
 
-    public UsuarioDomain salvar(UsuarioDomain usuario);
+    UsuarioDomain salvar(UsuarioDomain usuario);
 
-    public UsuarioDomain buscarPorId(Long id);
+    UsuarioDomain buscarPorId(Long id);
 
-    public List<UsuarioDomain> buscarTodos();
+    List<UsuarioDomain> buscarTodos();
 
-    public void apagar(Long id);
+    void apagar(Long id);
 
-    public UsuarioDomain buscarPorCPF(String cpf);
+    UsuarioDomain buscarPorCPF(String cpf);
 }

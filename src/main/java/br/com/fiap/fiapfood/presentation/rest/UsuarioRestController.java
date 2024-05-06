@@ -19,15 +19,15 @@ public class UsuarioRestController {
     @PostMapping
     public UsuarioDTO salvar(@RequestBody UsuarioDTO usuarioDTO) {
 
-        return UsuarioMapper.INSTANCE.toUsuarioDTO(
+        return UsuarioMapper.INSTANCE.toUsuarioDTOFromDomain(
                 usuarioController.salvar(
-                        UsuarioMapper.INSTANCE.toUsuarioDomainFromDTO(usuarioDTO)));
+                        UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuarioDTO)));
     }
 
     @GetMapping("/{id}")
     public UsuarioDTO buscarPorId(@PathVariable Long id) {
         UsuarioDomain usuarioDomain = usuarioController.buscarPorId(id);
-        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioDomain);
+        return UsuarioMapper.INSTANCE.toUsuarioDTOFromDomain(usuarioDomain);
     }
 
 
@@ -35,14 +35,14 @@ public class UsuarioRestController {
     public List<UsuarioDTO> buscarTodos() {
         return usuarioController.buscarTodos()
                 .stream()
-                .map(UsuarioMapper.INSTANCE::toUsuarioDTO)
+                .map(UsuarioMapper.INSTANCE::toUsuarioDTOFromDomain)
                 .toList();
     }
 
     @GetMapping("/cpf")
     public UsuarioDTO buscarPorCPF(@RequestParam("cpf") String cpf) {
         UsuarioDomain usuarioDomain = usuarioController.buscarPorCPF(cpf);
-        return UsuarioMapper.INSTANCE.toUsuarioDTO(usuarioDomain);
+        return UsuarioMapper.INSTANCE.toUsuarioDTOFromDomain(usuarioDomain);
     }
 
     @DeleteMapping("/{id}")
