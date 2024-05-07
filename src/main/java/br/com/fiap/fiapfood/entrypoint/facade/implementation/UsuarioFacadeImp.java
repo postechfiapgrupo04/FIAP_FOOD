@@ -32,7 +32,7 @@ public class UsuarioFacadeImp implements UsuarioFacade {
 
     @Override
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
-        UsuarioDomain usuarioDomain = usuarioMapper.toUsuarioDomainFromUsuarioDTO(usuarioDTO);
+        UsuarioDomain usuarioDomain = usuarioMapper.toUsuarioDomainFromDTO(usuarioDTO);
         usuarioDomain = salvarUsuario.call(usuarioDomain);
         return usuarioMapper.toUsuarioDTOFromDomain(usuarioDomain);
     }
@@ -46,7 +46,7 @@ public class UsuarioFacadeImp implements UsuarioFacade {
     @Override
     public List<UsuarioDTO> buscarTodos() {
         return buscarTodosUsuarios.call().stream()
-                .map(usuarioMapper::toUsuarioDTOFromDomain)
+                .map(usuarioDomain -> usuarioMapper.toUsuarioDTOFromDomain(usuarioDomain))
                 .collect(Collectors.toList());
     }
 
