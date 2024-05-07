@@ -21,7 +21,7 @@ public class UsuarioRestController {
 
         return UsuarioMapper.INSTANCE.toUsuarioDTOFromDomain(
                 usuarioFacade.salvar(
-                        UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuarioDTO)));
+                        UsuarioMapper.INSTANCE.toUsuarioDomainFromDTO(usuarioDTO)));
     }
 
     @GetMapping("/{id}")
