@@ -1,6 +1,6 @@
 package br.com.fiap.fiapfood.core.usecase.usuario;
 
-import br.com.fiap.fiapfood.core.repositories.UsuarioRepository;
+import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 @Service

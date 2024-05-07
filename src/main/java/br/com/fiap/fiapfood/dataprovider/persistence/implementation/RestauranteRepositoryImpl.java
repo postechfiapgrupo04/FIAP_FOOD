@@ -1,7 +1,7 @@
 package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
-import br.com.fiap.fiapfood.core.repositories.RestauranteRepository;
+import br.com.fiap.fiapfood.core.gateways.RestauranteRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Restaurante;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.RestauranteJPARepository;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.RestauranteMapper;

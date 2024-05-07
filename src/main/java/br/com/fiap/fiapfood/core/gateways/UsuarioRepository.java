@@ -1,4 +1,4 @@
-package br.com.fiap.fiapfood.core.repositories;
+package br.com.fiap.fiapfood.core.gateways;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
 

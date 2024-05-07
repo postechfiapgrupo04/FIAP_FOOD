@@ -1,11 +1,14 @@
 package br.com.fiap.fiapfood.entrypoint.facade.implementation;
 
 import br.com.fiap.fiapfood.core.usecase.usuario.*;
+import br.com.fiap.fiapfood.entrypoint.api.dto.UsuarioDTO;
+import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;
 import br.com.fiap.fiapfood.entrypoint.facade.UsuarioFacade;
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class UsuarioFacadeImp implements UsuarioFacade {
@@ -16,27 +19,35 @@ public class UsuarioFacadeImp implements UsuarioFacade {
     private final BuscarUsuarioPorCPF buscarUsuarioPorCPF;
     private final ApagarUsuario apagarUsuario;
 
-    public UsuarioFacadeImp(SalvarUsuario salvarUsuario, BuscarUsuarioPorID buscarUsuarioPorID, BuscarTodosUsuarios buscarTodosUsuarios, BuscarUsuarioPorCPF buscarUsuarioPorCPF, ApagarUsuario apagarUsuario) {
+    private final UsuarioMapper usuarioMapper;
+
+    public UsuarioFacadeImp(SalvarUsuario salvarUsuario, BuscarUsuarioPorID buscarUsuarioPorID, BuscarTodosUsuarios buscarTodosUsuarios, BuscarUsuarioPorCPF buscarUsuarioPorCPF, ApagarUsuario apagarUsuario, UsuarioMapper usuarioMapper) {
         this.salvarUsuario = salvarUsuario;
         this.buscarUsuarioPorID = buscarUsuarioPorID;
         this.buscarTodosUsuarios = buscarTodosUsuarios;
         this.buscarUsuarioPorCPF = buscarUsuarioPorCPF;
         this.apagarUsuario = apagarUsuario;
+        this.usuarioMapper = usuarioMapper;
     }
 
     @Override
-    public UsuarioDomain salvar(UsuarioDomain usuario) {
-        return salvarUsuario.call(usuario);
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
+        UsuarioDomain usuarioDomain = usuarioMapper.toUsuarioDomainFromUsuarioDTO(usuarioDTO);
+        usuarioDomain = salvarUsuario.call(usuarioDomain);
+        return usuarioMapper.toUsuarioDTOFromDomain(usuarioDomain);
     }
 
     @Override
-    public UsuarioDomain buscarPorId(Long id) {
-        return buscarUsuarioPorID.call(id);
+    public UsuarioDTO buscarPorId(Long id) {
+        UsuarioDomain usuarioDomain = buscarUsuarioPorID.call(id);
+        return usuarioMapper.toUsuarioDTOFromDomain(usuarioDomain);
     }
 
     @Override
-    public List<UsuarioDomain> buscarTodos() {
-        return buscarTodosUsuarios.call();
+    public List<UsuarioDTO> buscarTodos() {
+        return buscarTodosUsuarios.call().stream()
+                .map(usuarioMapper::toUsuarioDTOFromDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -45,7 +56,8 @@ public class UsuarioFacadeImp implements UsuarioFacade {
     }
 
     @Override
-    public UsuarioDomain buscarPorCPF(String cpf) {
-        return buscarUsuarioPorCPF.call(cpf);
+    public UsuarioDTO buscarPorCPF(String cpf) {
+        UsuarioDomain usuarioDomain = buscarUsuarioPorCPF.call(cpf);
+        return usuarioMapper.toUsuarioDTOFromDomain(usuarioDomain);
     }
 }

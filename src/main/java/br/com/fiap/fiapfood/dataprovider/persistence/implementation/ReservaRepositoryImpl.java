@@ -3,7 +3,7 @@ package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 import br.com.fiap.fiapfood.core.entity.ReservaDomain;
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.core.repositories.ReservaRepository;
+import br.com.fiap.fiapfood.core.gateways.ReservaRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Reserva;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.ReservaJPARepository;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.ReservaMapper;
@@ -22,6 +22,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
     private final ReservaJPARepository reservaJPARepository;
 
+    private UsuarioMapper usuarioMapper;
 
     @Override
     public ReservaDomain salvar(ReservaDomain reserva) {
@@ -49,7 +50,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
     @Override
     public List<ReservaDomain> buscarPorUsuario(UsuarioDomain usuario) {
-        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByUsuario(UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuario));
+        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByUsuario(usuarioMapper.toUsuarioModelFromDomain(usuario));
         if (reservaEntities.isPresent()) {
             return reservaEntities.get().stream().map(ReservaMapper.INSTANCE::toReservaDomain).toList();
         }

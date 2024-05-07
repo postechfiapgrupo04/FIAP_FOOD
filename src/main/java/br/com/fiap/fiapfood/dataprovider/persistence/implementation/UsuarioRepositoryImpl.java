@@ -1,7 +1,7 @@
 package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.core.repositories.UsuarioRepository;
+import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Usuario;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.UsuarioJPARepository;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;
@@ -18,17 +18,19 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     private final UsuarioJPARepository usuarioJPARepository;
 
+    private final UsuarioMapper usuarioMapper;
+
     @Override
     public UsuarioDomain salvar(UsuarioDomain usuario) {
-        return UsuarioMapper.INSTANCE.toUsuarioDomainFromModel(
-                usuarioJPARepository.save(UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuario)));
+        return usuarioMapper.toUsuarioDomainFromModel(
+                usuarioJPARepository.save(usuarioMapper.toUsuarioModelFromDomain(usuario)));
     }
 
     @Override
     public UsuarioDomain buscarPorId(Long id) {
         Optional<Usuario> usuarioEntity = usuarioJPARepository.findById(id);
         if (usuarioEntity.isPresent()) {
-            return UsuarioMapper.INSTANCE.toUsuarioDomainFromModel(usuarioEntity.get());
+            return usuarioMapper.toUsuarioDomainFromModel(usuarioEntity.get());
         }
         throw new RuntimeException("Usuário não encontrado");
     }
@@ -38,7 +40,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         List<Usuario> usuarios = usuarioJPARepository.findAll();
         List<UsuarioDomain> usuarioDomains = usuarios
                 .stream()
-                .map(UsuarioMapper.INSTANCE::toUsuarioDomainFromModel)
+                .map(usuarioMapper::toUsuarioDomainFromModel)
                 .toList();
         return usuarioDomains;
     }
@@ -56,7 +58,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public UsuarioDomain buscarPorCPF(String cpf) {
         Optional<Usuario> usuarioEntity = usuarioJPARepository.findByCpf(cpf);
         if (usuarioEntity.isPresent()) {
-            return UsuarioMapper.INSTANCE.toUsuarioDomainFromModel(usuarioEntity.get());
+            return usuarioMapper.toUsuarioDomainFromModel(usuarioEntity.get());
         }
         throw new RuntimeException("Usuário não encontrado");
     }

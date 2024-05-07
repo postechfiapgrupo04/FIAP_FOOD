@@ -1,19 +1,20 @@
 package br.com.fiap.fiapfood.entrypoint.facade;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.entrypoint.api.dto.UsuarioDTO;
 
 import java.util.List;
 
 public interface UsuarioFacade {
 
-    UsuarioDomain salvar(UsuarioDomain usuario);
+    UsuarioDTO salvar(UsuarioDTO usuario);
 
-    UsuarioDomain buscarPorId(Long id);
+    UsuarioDTO buscarPorId(Long id);
 
-    List<UsuarioDomain> buscarTodos();
+    List<UsuarioDTO> buscarTodos();
 
     void apagar(Long id);
 
-    UsuarioDomain buscarPorCPF(String cpf);
+    UsuarioDTO buscarPorCPF(String cpf);
 
 }
