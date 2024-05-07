@@ -8,6 +8,7 @@ public record EnderecoDTO(
         String bairro,
         String cidade,
         String estado,
-        String cep
+        String cep,
+        RestauranteDTO restaurante
 ) {
 }

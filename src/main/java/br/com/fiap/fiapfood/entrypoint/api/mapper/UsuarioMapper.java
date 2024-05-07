@@ -13,14 +13,12 @@ public class UsuarioMapper {
             return null;
         }
 
-        UsuarioDTO usuarioDTO = new UsuarioDTO(
+        return new UsuarioDTO(
                 usuarioDomain.getId(),
                 usuarioDomain.getNome(),
                 usuarioDomain.getEmail(),
                 usuarioDomain.getCpf(),
                 null);
-
-        return usuarioDTO;
     }
 
     public static UsuarioDomain toUsuarioDomainFromDTO(UsuarioDTO usuarioDTO) {
@@ -28,14 +26,12 @@ public class UsuarioMapper {
             return null;
         }
 
-        UsuarioDomain usuarioDomain = new UsuarioDomain(
+        return new UsuarioDomain(
                 usuarioDTO.getId(),
                 usuarioDTO.getNome(),
                 usuarioDTO.getEmail(),
                 usuarioDTO.getCpf(),
                 null);
-
-        return usuarioDomain;
     }
 
     public static UsuarioDomain toUsuarioDomainFromModel(Usuario usuario) {
@@ -43,13 +39,11 @@ public class UsuarioMapper {
             return null;
         }
 
-        UsuarioDomain usuarioDomain = new UsuarioDomain(
+        return new UsuarioDomain(
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
                 usuario.getCpf(), null);
-
-        return usuarioDomain;
     }
 
     public static Usuario toUsuarioModelFromDomain(UsuarioDomain usuarioDomain) {
@@ -57,13 +51,11 @@ public class UsuarioMapper {
             return null;
         }
 
-        Usuario usuario = new Usuario(
+        return new Usuario(
                 usuarioDomain.getId(),
                 usuarioDomain.getNome(),
                 usuarioDomain.getEmail(),
                 usuarioDomain.getCpf(),
                 null);
-
-        return usuario;
     }
 }
