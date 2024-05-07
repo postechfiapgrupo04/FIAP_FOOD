@@ -1,7 +1,7 @@
 package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.core.repositories.UsuarioRepository;
+import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Usuario;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.UsuarioJPARepository;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;

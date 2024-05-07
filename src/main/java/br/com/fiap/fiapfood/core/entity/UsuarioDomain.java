@@ -20,34 +20,4 @@ public class UsuarioDomain {
     private String cpf;
     private List<ReservaDomain> reservas;
 
-    /*
-    public UsuarioDomain(String nome, String email, String cpf) {
-
-        if (nome.isBlank() || nome.isEmpty()) {
-            throw new RuntimeException("Nome inválido");
-        }
-        if (email.isBlank() || email.isEmpty()) {
-            throw new RuntimeException("Email inválido");
-        }
-        if (cpf.isBlank() || cpf.isEmpty()) {
-            throw new RuntimeException("CPF inválido");
-        }
-
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-    }
-     */
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UsuarioDomain usuario)) return false;
-        return Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(cpf, usuario.cpf);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, email, cpf);
-    }
 }

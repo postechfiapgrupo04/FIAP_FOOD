@@ -1,7 +1,7 @@
 package br.com.fiap.fiapfood.application.usecase;
 
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
-import br.com.fiap.fiapfood.core.repositories.RestauranteRepository;
+import br.com.fiap.fiapfood.core.gateways.RestauranteRepository;
 import br.com.fiap.fiapfood.core.usecase.RestauranteUsecase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

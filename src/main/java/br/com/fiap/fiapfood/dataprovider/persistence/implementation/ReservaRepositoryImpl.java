@@ -3,7 +3,7 @@ package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 import br.com.fiap.fiapfood.core.entity.ReservaDomain;
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
-import br.com.fiap.fiapfood.core.repositories.ReservaRepository;
+import br.com.fiap.fiapfood.core.gateways.ReservaRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Reserva;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.ReservaJPARepository;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.ReservaMapper;
