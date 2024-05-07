@@ -1,8 +1,7 @@
 package br.com.fiap.fiapfood.entrypoint.api;
 
-import br.com.fiap.fiapfood.core.usecase.RestauranteUsecase;
 import br.com.fiap.fiapfood.entrypoint.api.dto.RestauranteDTO;
-import br.com.fiap.fiapfood.entrypoint.api.mapper.RestauranteMapper;
+import br.com.fiap.fiapfood.entrypoint.facade.RestauranteFacade;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,38 +10,37 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class RestauranteRestController {
 
-    private final RestauranteUsecase restauranteUseCase;
+    private final RestauranteFacade restauranteFacade;
 
     @PostMapping
     public RestauranteDTO salvar(@RequestBody RestauranteDTO restauranteDTO) {
-        return RestauranteMapper.INSTANCE.toRestauranteDTO(
-                restauranteUseCase.salvar(
-                        RestauranteMapper.INSTANCE.toRestauranteDomainFromDTO(restauranteDTO)));
+        return restauranteFacade.salvar(restauranteDTO);
     }
 
     @GetMapping("/{id}")
     public RestauranteDTO buscarPorId(@PathVariable Long id) {
-        return RestauranteMapper.INSTANCE.toRestauranteDTO(restauranteUseCase.buscarPorId(id));
+        return restauranteFacade.buscarPorId(id);
     }
 
     @DeleteMapping("/{id}")
     public void apagar(@PathVariable Long id) {
-        restauranteUseCase.apagar(id);
+
+        restauranteFacade.apagar(id);
     }
 
     @GetMapping("/nome/{nome}")
     public RestauranteDTO buscarPorNome(@PathVariable String nome) {
-        return RestauranteMapper.INSTANCE.toRestauranteDTO(restauranteUseCase.buscarPorNome(nome));
+        return restauranteFacade.buscarPorNome(nome);
     }
 
     @GetMapping("/endereco/{endereco}")
     public RestauranteDTO buscarPorEndereco(@PathVariable String endereco) {
-        return RestauranteMapper.INSTANCE.toRestauranteDTO(restauranteUseCase.buscarPorEndereco(endereco));
+        return restauranteFacade.buscarPorEndereco(endereco);
     }
 
     @GetMapping("/cozinha/{cozinha}")
     public RestauranteDTO buscarPorCozinha(@PathVariable String cozinha) {
-        return RestauranteMapper.INSTANCE.toRestauranteDTO(restauranteUseCase.buscarPorTipoCozinha(cozinha));
+        return restauranteFacade.buscarPorTipoCozinha(cozinha);
     }
 
 }

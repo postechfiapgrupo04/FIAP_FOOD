@@ -18,16 +18,16 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
 
     @Override
     public RestauranteDomain salvar(RestauranteDomain restaurante) {
-        return RestauranteMapper.INSTANCE.toRestauranteDomain(
+        return RestauranteMapper.toRestauranteDomainFromModel(
                 restauranteJPARepository.save(
-                        RestauranteMapper.INSTANCE.toRestauranteEntity(restaurante)));
+                        RestauranteMapper.toRestauranteModelFromDomain(restaurante)));
     }
 
     @Override
     public RestauranteDomain buscarPorId(Long id) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findById(id);
         if (restauranteEntity.isPresent()) {
-            return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
+            return RestauranteMapper.toRestauranteDomainFromModel(restauranteEntity.get());
         }
         throw new RuntimeException("Restaurante não encontrado");
     }
@@ -35,9 +35,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     @Override
     public void apagar(Long id) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findById(id);
-        if (restauranteEntity.isPresent()) {
-            restauranteJPARepository.delete(restauranteEntity.get());
-        }
+        restauranteEntity.ifPresent(restauranteJPARepository::delete);
         throw new RuntimeException("Restaurante não encontrado");
     }
 
@@ -45,7 +43,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     public RestauranteDomain buscarPorNome(String nome) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findByNomeIsLike(nome);
         if (restauranteEntity.isPresent()) {
-            return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
+            return RestauranteMapper.toRestauranteDomainFromModel(restauranteEntity.get());
         }
         throw new RuntimeException("Restaurante não encontrado");
     }
@@ -54,7 +52,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     public RestauranteDomain buscarPorEndereco(String endereco) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findByEndereco(endereco);
         if (restauranteEntity.isPresent()) {
-            return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
+            return RestauranteMapper.toRestauranteDomainFromModel(restauranteEntity.get());
         }
         throw new RuntimeException("Restaurante não encontrado");
     }
@@ -63,7 +61,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     public RestauranteDomain buscarPorTipoCozinha(String tipoCozinha) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findByTipoCozinha(tipoCozinha);
         if (restauranteEntity.isPresent()) {
-            return RestauranteMapper.INSTANCE.toRestauranteDomain(restauranteEntity.get());
+            return RestauranteMapper.toRestauranteDomainFromModel(restauranteEntity.get());
         }
         throw new RuntimeException("Restaurante não encontrado");
     }

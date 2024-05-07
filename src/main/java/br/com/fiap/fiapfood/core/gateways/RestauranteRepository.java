@@ -4,16 +4,16 @@ import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
 
 public interface RestauranteRepository {
 
-    public RestauranteDomain salvar(RestauranteDomain restaurante);
+    RestauranteDomain salvar(RestauranteDomain restaurante);
 
-    public RestauranteDomain buscarPorId(Long id);
+    RestauranteDomain buscarPorId(Long id);
 
-    public void apagar(Long id);
+    void apagar(Long id);
 
-    public RestauranteDomain buscarPorNome(String nome);
+    RestauranteDomain buscarPorNome(String nome);
 
-    public RestauranteDomain buscarPorEndereco(String endereco);
+    RestauranteDomain buscarPorEndereco(String endereco);
 
-    public RestauranteDomain buscarPorTipoCozinha(String tipoCozinha);
+    RestauranteDomain buscarPorTipoCozinha(String tipoCozinha);
 
 }
