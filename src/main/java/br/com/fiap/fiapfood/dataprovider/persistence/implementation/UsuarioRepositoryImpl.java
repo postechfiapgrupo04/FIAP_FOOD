@@ -18,17 +18,19 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     private final UsuarioJPARepository usuarioJPARepository;
 
+    private final UsuarioMapper usuarioMapper;
+
     @Override
     public UsuarioDomain salvar(UsuarioDomain usuario) {
-        return UsuarioMapper.INSTANCE.toUsuarioDomainFromModel(
-                usuarioJPARepository.save(UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuario)));
+        return UsuarioMapper.toUsuarioDomainFromModel(
+                usuarioJPARepository.save(UsuarioMapper.toUsuarioModelFromDomain(usuario)));
     }
 
     @Override
     public UsuarioDomain buscarPorId(Long id) {
         Optional<Usuario> usuarioEntity = usuarioJPARepository.findById(id);
         if (usuarioEntity.isPresent()) {
-            return UsuarioMapper.INSTANCE.toUsuarioDomainFromModel(usuarioEntity.get());
+            return UsuarioMapper.toUsuarioDomainFromModel(usuarioEntity.get());
         }
         throw new RuntimeException("Usuário não encontrado");
     }
@@ -38,7 +40,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         List<Usuario> usuarios = usuarioJPARepository.findAll();
         List<UsuarioDomain> usuarioDomains = usuarios
                 .stream()
-                .map(UsuarioMapper.INSTANCE::toUsuarioDomainFromModel)
+                .map(UsuarioMapper::toUsuarioDomainFromModel)
                 .toList();
         return usuarioDomains;
     }
@@ -56,7 +58,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public UsuarioDomain buscarPorCPF(String cpf) {
         Optional<Usuario> usuarioEntity = usuarioJPARepository.findByCpf(cpf);
         if (usuarioEntity.isPresent()) {
-            return UsuarioMapper.INSTANCE.toUsuarioDomainFromModel(usuarioEntity.get());
+            return UsuarioMapper.toUsuarioDomainFromModel(usuarioEntity.get());
         }
         throw new RuntimeException("Usuário não encontrado");
     }

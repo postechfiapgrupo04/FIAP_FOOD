@@ -22,6 +22,8 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
     private final ReservaJPARepository reservaJPARepository;
 
+    private final UsuarioMapper usuarioMapper;
+
 
     @Override
     public ReservaDomain salvar(ReservaDomain reserva) {
@@ -49,7 +51,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
     @Override
     public List<ReservaDomain> buscarPorUsuario(UsuarioDomain usuario) {
-        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByUsuario(UsuarioMapper.INSTANCE.toUsuarioModelFromDomain(usuario));
+        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByUsuario(UsuarioMapper.toUsuarioModelFromDomain(usuario));
         if (reservaEntities.isPresent()) {
             return reservaEntities.get().stream().map(ReservaMapper.INSTANCE::toReservaDomain).toList();
         }
