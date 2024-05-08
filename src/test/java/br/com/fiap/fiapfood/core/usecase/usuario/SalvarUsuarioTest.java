@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.core.usecase.usuario;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import br.com.fiap.fiapfood.entrypoint.api.dto.UsuarioDTO;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,7 @@ class SalvarUsuarioTest {
     AutoCloseable openMocks;
 
     @Mock
-    private SalvarUsuario salvarUsuario;
+    private UsuarioRepository usuarioRepository;
 
     @BeforeEach
     void setup() {
@@ -36,12 +37,13 @@ class SalvarUsuarioTest {
     void call() {
         //Arrange
         UsuarioDomain usuarioDomain = usuarioMock;
+        SalvarUsuario salvarUsuario = new SalvarUsuario(usuarioRepository);
         when(salvarUsuario.call(any(UsuarioDomain.class))).thenReturn(usuarioDomain);
         //Act
         UsuarioDomain usuario = salvarUsuario.call(usuarioDomain);
         //Assert
         assertThat(usuarioDomain.getId()).isEqualTo(usuario.getId());
-        verify(salvarUsuario, times(1)).call(any(UsuarioDomain.class));
+        verify(usuarioRepository, times(1)).salvar(any(UsuarioDomain.class));
     }
 
     UsuarioDomain usuarioMock = new UsuarioDomain(
