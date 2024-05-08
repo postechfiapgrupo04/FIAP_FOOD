@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalTime;
 
@@ -16,40 +18,26 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
-class RestauranteRepositoryTest {
+@SpringBootTest
+class RestauranteRepositoryTestIT {
 
-    AutoCloseable openMocks;
-
-    @Mock
+    @Autowired
     private RestauranteRepository restauranteRepository;
-
-    @BeforeEach
-    void setup() {
-        openMocks = MockitoAnnotations.openMocks(this);
-    }
-
-    @AfterEach
-    void tearDown() throws Exception {
-        openMocks.close();
-    }
 
     @Test
     void deveSalvar() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepository.salvar(restauranteDomain)).thenReturn(restauranteDomain);
-
         RestauranteDomain restaurante = restauranteRepository.salvar(restauranteDomain);
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
     }
-
+    /*
     @Test
     void deveBuscarPorIDERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepository.buscarPorId(restauranteDomain.getId())).thenReturn(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorId(restauranteDomain.getId());
         //Assert
@@ -60,7 +48,6 @@ class RestauranteRepositoryTest {
     @Test
     void deveBuscarPorIDERetornarExcecao() {
         // Arrange
-        when(restauranteRepository.buscarPorId(anyLong())).thenThrow(RuntimeException.class);
         // Act
         //Assert
         assertThatThrownBy(() -> restauranteRepository.buscarPorId(anyLong()))
@@ -71,9 +58,6 @@ class RestauranteRepositoryTest {
     void deveApagarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        doNothing()
-                .when(restauranteRepository).apagar(restauranteDomain.getId());
-
         restauranteRepository.apagar(restauranteDomain.getId());
 
         verify(restauranteRepository, times(1)).apagar(anyLong());
@@ -82,8 +66,6 @@ class RestauranteRepositoryTest {
     @Test
     void deveGerarExcecaoAoApagarRestaurante() {
         // Arrange
-        doThrow(RuntimeException.class)
-                .when(restauranteRepository).apagar(anyLong());
         // Act
         //Assert
         assertThatThrownBy(() -> restauranteRepository.apagar(anyLong()))
@@ -94,7 +76,6 @@ class RestauranteRepositoryTest {
     void deveBuscarPorNomeERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepository.buscarPorNome(restauranteDomain.getNome())).thenReturn(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorNome(restauranteDomain.getNome());
         //Assert
@@ -106,7 +87,6 @@ class RestauranteRepositoryTest {
     void deveBuscarPorNomeERetornarExcecao() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepository.buscarPorNome(anyString())).thenThrow(RuntimeException.class);
         // Act
         //Assert
         assertThatThrownBy(() -> restauranteRepository.buscarPorNome(anyString()))
@@ -117,7 +97,6 @@ class RestauranteRepositoryTest {
     void deveBuscarPorEnderecoERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepository.buscarPorEndereco(restauranteDomain.getEndereco().getLogradouro())).thenReturn(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorEndereco(restauranteDomain.getEndereco().getLogradouro());
         //Assert
@@ -128,7 +107,6 @@ class RestauranteRepositoryTest {
     @Test
     void deveBuscarPorEnderecoERetornarExcecao() {
         // Arrange
-        when(restauranteRepository.buscarPorEndereco(anyString())).thenThrow(RuntimeException.class);
         // Act
         //Assert
         assertThatThrownBy(() -> restauranteRepository.buscarPorEndereco(anyString()))
@@ -139,7 +117,6 @@ class RestauranteRepositoryTest {
     void deveBuscarPorCozinhaERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepository.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha().toString())).thenReturn(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha().toString());
         //Assert
@@ -150,16 +127,14 @@ class RestauranteRepositoryTest {
     @Test
     void deveBuscarPorCozinhaERetornarExcecao() {
         // Arrange
-        when(restauranteRepository.buscarPorTipoCozinha(anyString())).thenThrow(RuntimeException.class);
         // Act
         //Assert
         assertThatThrownBy(() -> restauranteRepository.buscarPorTipoCozinha(anyString()))
                 .isInstanceOf(RuntimeException.class);
     }
-
+    */
     private RestauranteDomain criarRestaurante() {
         EnderecoDomain endereco = new EnderecoDomain();
-        endereco.setId(1L);
         endereco.setLogradouro("Rua Teste");
         endereco.setNumero("12345678");
         endereco.setComplemento("Complemento Teste");
@@ -169,7 +144,6 @@ class RestauranteRepositoryTest {
         endereco.setCep("12345678");
 
         RestauranteDomain restauranteDomain = new RestauranteDomain();
-        restauranteDomain.setId(1L);
         restauranteDomain.setNome("Restaurante Teste");
         restauranteDomain.setTipoCozinha(TipoCozinha.BRASILEIRA);
         restauranteDomain.setHorarioFuncionamentoAbertura(LocalTime.of(10, 0));

@@ -64,7 +64,6 @@ class SalvarRestauranteTest {
         restauranteDomain.setHorarioFuncionamentoFechamento(LocalTime.of(22, 0));
         restauranteDomain.setCapacidade(100);
 
-        endereco.setRestaurante(restauranteDomain);
         restauranteDomain.setEndereco(endereco);
         return restauranteDomain;
     }
