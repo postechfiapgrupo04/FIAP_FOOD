@@ -1,0 +1,33 @@
+version: "3.9"
+
+networks:
+  fiapfood-api-network:
+    driver: bridge
+
+services:
+#  fiapfood-db:
+#    image: postgres
+#    environment:
+#      POSTGRES_PASSWORD: 123456
+#      POSTGRES_USER: root
+#      POSTGRES_DB: fiapfooddb
+#    ports:
+#      - 5432:5432
+#    networks:
+#      - fiapfood-api-network
+#    restart: always
+#    shm_size: 128mb
+
+  fiapfood-api:
+    image: fiapfoodgp04-api
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://fiapfood-db:5432/fiapfooddb
+#      - SPRING_DATASOURCE_USERNAME=root
+#      - SPRING_DATASOURCE_PASSWORD=123456
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+    networks:
+      - fiapfood-api-network
+    depends_on:
+      - fiapfood-db
