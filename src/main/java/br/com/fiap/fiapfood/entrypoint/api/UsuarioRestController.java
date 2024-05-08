@@ -34,8 +34,8 @@ public class UsuarioRestController {
                 .toList();
     }
 
-    @GetMapping("/cpf")
-    public UsuarioDTO buscarPorCPF(@RequestParam("cpf") String cpf) {
+    @GetMapping("/cpf/{cpf}")
+    public UsuarioDTO buscarPorCPF(@PathVariable("cpf") String cpf) {
        return usuarioFacade.buscarPorCPF(cpf);
     }
 
