@@ -69,7 +69,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
     @Override
     public List<ReservaDomain> buscarPorRestaurante(RestauranteDomain restaurante) {
-        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByRestaurante(RestauranteMapper.INSTANCE.toRestauranteEntity(restaurante));
+        Optional<List<Reserva>> reservaEntities = reservaJPARepository.findByRestaurante(RestauranteMapper.toRestauranteModelFromDomain(restaurante));
         if (reservaEntities.isPresent()) {
             return reservaEntities.get().stream().map(ReservaMapper.INSTANCE::toReservaDomain).toList();
         }

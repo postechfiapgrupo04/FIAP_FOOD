@@ -10,7 +10,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-07T21:16:44-0300",
+    date = "2024-05-07T22:28:37-0300",
     comments = "version: 1.6.0.Beta1, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.7.jar, environment: Java 17.0.10 (Azul Systems, Inc.)"
 )
 public class ReservaMapperImpl implements ReservaMapper {
