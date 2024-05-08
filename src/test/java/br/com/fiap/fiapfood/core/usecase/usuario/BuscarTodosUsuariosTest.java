@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.core.usecase.usuario;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.core.gateways.AvaliacaoRepository;
 import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import br.com.fiap.fiapfood.entrypoint.api.dto.UsuarioDTO;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -24,7 +26,7 @@ class BuscarTodosUsuariosTest {
     AutoCloseable openMocks;
 
     @Mock
-    private BuscarTodosUsuarios buscarTodosUsuarios;
+    private UsuarioRepository usuarioRepository;
 
     @BeforeEach
     void setup() {
@@ -39,11 +41,12 @@ class BuscarTodosUsuariosTest {
     @Test
     void call() {
         //Arrange
+        BuscarTodosUsuarios buscarTodosUsuarios = new BuscarTodosUsuarios(usuarioRepository);
         List<UsuarioDomain> usuariosList = Arrays.asList(
                 usuario1,
                 usuario2
         );
-        when(buscarTodosUsuarios.call()).thenReturn(usuariosList);
+        when(usuarioRepository.buscarTodos()).thenReturn(usuariosList);
 
         //Act
         List<UsuarioDomain> usuarioDomainList = buscarTodosUsuarios.call();
@@ -53,7 +56,7 @@ class BuscarTodosUsuariosTest {
                 .hasSize(2)
                 .containsExactlyInAnyOrder(usuario1, usuario2);
 
-        verify(buscarTodosUsuarios, times(1)).call();
+        verify(usuarioRepository, times(1)).buscarTodos();
 
     }
     UsuarioDomain usuario1 = new UsuarioDomain(

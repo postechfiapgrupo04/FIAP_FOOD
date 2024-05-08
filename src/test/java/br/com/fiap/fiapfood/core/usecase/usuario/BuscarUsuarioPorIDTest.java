@@ -21,7 +21,7 @@ class BuscarUsuarioPorIDTest {
     AutoCloseable openMocks;
 
     @Mock
-    private BuscarUsuarioPorID buscarUsuarioPorID;
+    private UsuarioRepository usuarioRepository;
 
     @BeforeEach
     void setup() {
@@ -37,13 +37,14 @@ class BuscarUsuarioPorIDTest {
     void call() {
         //Arrange
         UsuarioDTO usuarioDTO = usuarioMock;
+        BuscarUsuarioPorID buscarUsuarioPorID = new BuscarUsuarioPorID(usuarioRepository);
         when(buscarUsuarioPorID.call(anyLong())).thenReturn(UsuarioMapper.toUsuarioDomainFromDTO(usuarioDTO));
         //Act
         UsuarioDomain usuarioDomain = buscarUsuarioPorID.call(1L);
 
         //Assert
         assertThat(usuarioDTO.getId()).isEqualTo(usuarioDomain.getId());
-        verify(buscarUsuarioPorID, times(1)).call(any(Long.class));
+        verify(usuarioRepository, times(1)).buscarPorId(any(Long.class));
     }
 
     UsuarioDTO usuarioMock = new UsuarioDTO(
