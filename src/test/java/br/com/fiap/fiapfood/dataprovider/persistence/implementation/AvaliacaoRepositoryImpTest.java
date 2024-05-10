@@ -19,6 +19,8 @@ import static org.mockito.Mockito.*;
 
 public class AvaliacaoRepositoryImpTest {
 
+    /*TESTE*/
+
     @Mock
     private AvaliacaoJPARepository avaliacaoJPARepository;
 
