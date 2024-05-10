@@ -30,6 +30,10 @@ jobs:
     - name: Grant execute permission to gradlew
       run: chmod +x ./gradlew
 
+    # Add step to run tests
+    - name: Run tests
+      run: ./gradlew test
+
   dependency-submission:
 
     runs-on: ubuntu-latest
