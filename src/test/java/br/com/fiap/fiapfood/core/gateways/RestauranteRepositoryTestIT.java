@@ -24,6 +24,10 @@ class RestauranteRepositoryTestIT {
     @Autowired
     private RestauranteRepository restauranteRepository;
 
+    void apagar(Long id) {
+        restauranteRepository.apagar(id);
+    }
+
     @Test
     void deveSalvar() {
         // Arrange
@@ -32,17 +36,20 @@ class RestauranteRepositoryTestIT {
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
+        apagar(restaurante.getId());
     }
-    /*
+
     @Test
     void deveBuscarPorIDERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
+        restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorId(restauranteDomain.getId());
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
+        apagar(restaurante.getId());
     }
 
     @Test
@@ -58,6 +65,7 @@ class RestauranteRepositoryTestIT {
     void deveApagarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
+        restauranteRepository.salvar(restauranteDomain);
         restauranteRepository.apagar(restauranteDomain.getId());
 
         verify(restauranteRepository, times(1)).apagar(anyLong());
@@ -76,32 +84,38 @@ class RestauranteRepositoryTestIT {
     void deveBuscarPorNomeERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
+        restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorNome(restauranteDomain.getNome());
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
+        apagar(restaurante.getId());
     }
 
     @Test
     void deveBuscarPorNomeERetornarExcecao() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
+        restauranteRepository.salvar(restauranteDomain);
         // Act
         //Assert
         assertThatThrownBy(() -> restauranteRepository.buscarPorNome(anyString()))
                 .isInstanceOf(RuntimeException.class);
+        apagar(restauranteDomain.getId());
     }
 
     @Test
     void deveBuscarPorEnderecoERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
+        restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorEndereco(restauranteDomain.getEndereco().getLogradouro());
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
+        apagar(restauranteDomain.getId());
     }
 
     @Test
@@ -117,11 +131,13 @@ class RestauranteRepositoryTestIT {
     void deveBuscarPorCozinhaERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
+        restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha().toString());
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
+        apagar(restauranteDomain.getId());
     }
 
     @Test
@@ -132,7 +148,7 @@ class RestauranteRepositoryTestIT {
         assertThatThrownBy(() -> restauranteRepository.buscarPorTipoCozinha(anyString()))
                 .isInstanceOf(RuntimeException.class);
     }
-    */
+
     private RestauranteDomain criarRestaurante() {
         EnderecoDomain endereco = new EnderecoDomain();
         endereco.setLogradouro("Rua Teste");

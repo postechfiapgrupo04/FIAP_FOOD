@@ -2,8 +2,11 @@ package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
 import br.com.fiap.fiapfood.core.gateways.RestauranteRepository;
+import br.com.fiap.fiapfood.dataprovider.persistence.model.Endereco;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Restaurante;
+import br.com.fiap.fiapfood.dataprovider.persistence.repository.EnderecoJPARepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.RestauranteJPARepository;
+import br.com.fiap.fiapfood.entrypoint.api.mapper.EnderecoMapper;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.RestauranteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,12 +18,15 @@ import java.util.Optional;
 public class RestauranteRepositoryImpl implements RestauranteRepository {
 
     private final RestauranteJPARepository restauranteJPARepository;
+    private final EnderecoJPARepository enderecoJPARepository;
 
     @Override
     public RestauranteDomain salvar(RestauranteDomain restaurante) {
+        Endereco endereco = enderecoJPARepository.save(EnderecoMapper.toEnderecoModelFromDomain(restaurante.getEndereco()));
+        Restaurante restauranteModel = RestauranteMapper.toRestauranteModelFromDomain(restaurante);
+        restauranteModel.setEndereco(endereco);
         return RestauranteMapper.toRestauranteDomainFromModel(
-                restauranteJPARepository.save(
-                        RestauranteMapper.toRestauranteModelFromDomain(restaurante)));
+                restauranteJPARepository.save(restauranteModel));
     }
 
     @Override
