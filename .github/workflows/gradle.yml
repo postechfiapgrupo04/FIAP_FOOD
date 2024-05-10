@@ -30,9 +30,6 @@ jobs:
     - name: Grant execute permission to gradlew
       run: chmod +x ./gradlew
 
-    - name: Build with Gradle Wrapper
-      run: ./gradlew build
-
   dependency-submission:
 
     runs-on: ubuntu-latest
