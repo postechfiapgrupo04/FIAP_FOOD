@@ -16,7 +16,7 @@ public class AvaliacaoFacadeImp implements AvaliacaoFacade{
     private final SalvarAvaliacao salvarAvaliacao;
     private final BuscarAvaliacaoPorID buscarAvaliacaoPorID;
     private final BuscarTodasAvaliacaos buscarTodasAvaliacaos;
-    private final BuscarAvaliacaoPorCPF buscarAvaliacaoPorCPF;
+    private final BuscarAvaliacaoPorNomeRestaurante buscarAvaliacaoPorNomeRestaurante;
     private final ApagarAvaliacao apagarAvaliacao;
 
     private final AvaliacaoMapper avaliacaoMapper;
@@ -25,14 +25,14 @@ public class AvaliacaoFacadeImp implements AvaliacaoFacade{
             SalvarAvaliacao salvarAvaliacao,
             BuscarAvaliacaoPorID buscarAvaliacaoPorID,
             BuscarTodasAvaliacaos buscarTodasAvaliacaos,
-            BuscarAvaliacaoPorCPF buscarAvaliacaoPorCPF,
+            BuscarAvaliacaoPorNomeRestaurante buscarAvaliacaoPorNomeRestaurante,
             ApagarAvaliacao apagarAvaliacao,
             AvaliacaoMapper avaliacaoMapper
     ) {
         this.salvarAvaliacao = salvarAvaliacao;
         this.buscarAvaliacaoPorID = buscarAvaliacaoPorID;
         this.buscarTodasAvaliacaos =  buscarTodasAvaliacaos;
-        this.buscarAvaliacaoPorCPF = buscarAvaliacaoPorCPF;
+        this.buscarAvaliacaoPorNomeRestaurante = buscarAvaliacaoPorNomeRestaurante;
         this.apagarAvaliacao = apagarAvaliacao;
         this.avaliacaoMapper = avaliacaoMapper;
     }
@@ -63,8 +63,8 @@ public class AvaliacaoFacadeImp implements AvaliacaoFacade{
     }
 
     @Override
-    public AvaliacaoDTO buscarPorCPF(String cpf) {
-        AvaliacaoDomain AvaliacaoDomain = buscarAvaliacaoPorCPF.call(cpf);
+    public AvaliacaoDTO buscarPorNomeRestaurante(String nomeRestaurante) {
+        AvaliacaoDomain AvaliacaoDomain = buscarAvaliacaoPorNomeRestaurante.call(nomeRestaurante);
         return avaliacaoMapper.toAvaliacaoDTOFromDomain(AvaliacaoDomain);
     }
 }

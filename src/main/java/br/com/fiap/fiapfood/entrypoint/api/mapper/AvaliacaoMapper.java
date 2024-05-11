@@ -16,7 +16,7 @@ public class AvaliacaoMapper {
                 avaliacaoDomain.getId(),
                 avaliacaoDomain.getDescricao(),
                 avaliacaoDomain.getEstrelas(),
-                avaliacaoDomain.getCpf()
+                avaliacaoDomain.getNomeRestaurante()
                 );
 
         return avaliacaoDTO;
@@ -31,7 +31,7 @@ public class AvaliacaoMapper {
                 avaliacaoDTO.getId(),
                 avaliacaoDTO.getDescricao(),
                 avaliacaoDTO.getEstrelas(),
-                avaliacaoDTO.getCpf()
+                avaliacaoDTO.getNomeRestaurante()
                 );
 
         return avaliacaoDomain;
@@ -46,7 +46,7 @@ public class AvaliacaoMapper {
                 avaliacao.getId(),
                 avaliacao.getDescricao(),
                 avaliacao.getEstrelas(),
-                avaliacao.getCpf()
+                avaliacao.getNomeRestaurante()
                 );
 
         return avaliacaoDomain;
@@ -61,7 +61,7 @@ public class AvaliacaoMapper {
                 avaliacaoDomain.getId(),
                 avaliacaoDomain.getDescricao(),
                 avaliacaoDomain.getEstrelas(),
-                avaliacaoDomain.getCpf()
+                avaliacaoDomain.getNomeRestaurante()
                 );
 
         return avaliacao;

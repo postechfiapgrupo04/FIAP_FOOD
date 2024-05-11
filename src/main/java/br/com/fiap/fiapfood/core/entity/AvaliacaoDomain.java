@@ -15,5 +15,5 @@ public class AvaliacaoDomain {
     private Long id;
     private String descricao;
     private String estrelas;
-    private String cpf;
+    private String nomeRestaurante;
 }
