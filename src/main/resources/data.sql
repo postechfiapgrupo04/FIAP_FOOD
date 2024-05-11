@@ -1,4 +1,4 @@
-INSERT INTO USUARIO
+INSERT INTO USUARIO (id, nome, email, cpf)
 VALUES
     ('1', 'Bruno', 'bruno@fiap.com', '01234567890'),
     ('2', 'Milton', 'milton@fiap.com', '01234567891'),

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 @AllArgsConstructor
 public class UsuarioRestController {
 
@@ -35,7 +35,7 @@ public class UsuarioRestController {
     }
 
     @GetMapping("/cpf/{cpf}")
-    public UsuarioDTO buscarPorCPF(@PathVariable("cpf") String cpf) {
+       public UsuarioDTO buscarPorCPF(@PathVariable String cpf) {
        return usuarioFacade.buscarPorCPF(cpf);
     }
 
