@@ -1,5 +1,6 @@
 package br.com.fiap.fiapfood.entrypoint.api;
 
+import br.com.fiap.fiapfood.core.enums.TipoCozinha;
 import br.com.fiap.fiapfood.entrypoint.api.dto.RestauranteDTO;
 import br.com.fiap.fiapfood.entrypoint.facade.RestauranteFacade;
 import lombok.AllArgsConstructor;
@@ -39,7 +40,7 @@ public class RestauranteRestController {
     }
 
     @GetMapping("/cozinha/{cozinha}")
-    public RestauranteDTO buscarPorCozinha(@PathVariable String cozinha) {
+    public RestauranteDTO buscarPorCozinha(@PathVariable TipoCozinha cozinha) {
         return restauranteFacade.buscarPorTipoCozinha(cozinha);
     }
 
