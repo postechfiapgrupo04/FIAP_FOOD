@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.core.usecase.restaurante;
 
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
+import br.com.fiap.fiapfood.core.enums.TipoCozinha;
 import br.com.fiap.fiapfood.core.gateways.RestauranteRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class BuscarRestaurantePorCozinha {
         this.restauranteRepository = restauranteRepository;
     }
 
-    public RestauranteDomain call(String cozinha) {
+    public RestauranteDomain call(TipoCozinha cozinha) {
         return restauranteRepository.buscarPorTipoCozinha(cozinha);
     }
 

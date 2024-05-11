@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.core.gateways;
 
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
+import br.com.fiap.fiapfood.core.enums.TipoCozinha;
 
 public interface RestauranteRepository {
 
@@ -14,6 +15,6 @@ public interface RestauranteRepository {
 
     RestauranteDomain buscarPorEndereco(String endereco);
 
-    RestauranteDomain buscarPorTipoCozinha(String tipoCozinha);
+    RestauranteDomain buscarPorTipoCozinha(TipoCozinha tipoCozinha);
 
 }

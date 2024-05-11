@@ -1,5 +1,6 @@
 package br.com.fiap.fiapfood.entrypoint.facade;
 
+import br.com.fiap.fiapfood.core.enums.TipoCozinha;
 import br.com.fiap.fiapfood.entrypoint.api.dto.RestauranteDTO;
 
 public interface RestauranteFacade {
@@ -14,6 +15,6 @@ public interface RestauranteFacade {
 
     RestauranteDTO buscarPorEndereco(String endereco);
 
-    RestauranteDTO buscarPorTipoCozinha(String tipoCozinha);
+    RestauranteDTO buscarPorTipoCozinha(TipoCozinha tipoCozinha);
 
 }

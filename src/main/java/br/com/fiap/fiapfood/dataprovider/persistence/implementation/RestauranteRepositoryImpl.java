@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 
 import br.com.fiap.fiapfood.core.entity.RestauranteDomain;
+import br.com.fiap.fiapfood.core.enums.TipoCozinha;
 import br.com.fiap.fiapfood.core.gateways.RestauranteRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Endereco;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Restaurante;
@@ -64,7 +65,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     }
 
     @Override
-    public RestauranteDomain buscarPorTipoCozinha(String tipoCozinha) {
+    public RestauranteDomain buscarPorTipoCozinha(TipoCozinha tipoCozinha) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findByTipoCozinha(tipoCozinha);
         if (restauranteEntity.isPresent()) {
             return RestauranteMapper.toRestauranteDomainFromModel(restauranteEntity.get());
