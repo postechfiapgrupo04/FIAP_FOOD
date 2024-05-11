@@ -67,6 +67,7 @@ public class RestauranteMapper {
                 restauranteDomain.getNome(),
                 EnderecoMapper.toEnderecoModelFromDomain(restauranteDomain.getEndereco()),
                 null,
+                null,
                 restauranteDomain.getTipoCozinha(),
                 restauranteDomain.getHorarioFuncionamentoAbertura(),
                 restauranteDomain.getHorarioFuncionamentoFechamento(),

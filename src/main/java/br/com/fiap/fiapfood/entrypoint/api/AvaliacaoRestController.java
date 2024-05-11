@@ -33,10 +33,12 @@ public class AvaliacaoRestController {
                 .toList();
     }
 
+    /*
     @GetMapping("/restaurante/{nomeRestaurante}")
     public AvaliacaoDTO buscarPorNomeRestaurante(@PathVariable("nomeRestaurante") String nomeRestaurante) {
         return avaliacaoFacade.buscarPorNomeRestaurante(nomeRestaurante);
     }
+     */
 
     @DeleteMapping("/{id}")
     public void apagar(@PathVariable Long id) {
