@@ -37,6 +37,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Reserva> reservas;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Avaliacao> avaliacoes;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

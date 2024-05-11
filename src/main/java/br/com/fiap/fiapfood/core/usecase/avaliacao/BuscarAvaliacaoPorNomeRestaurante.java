@@ -12,7 +12,9 @@ public class BuscarAvaliacaoPorNomeRestaurante {
         this.avaliacaoRepository = avaliacaoRepository;
     }
 
+    /*
     public AvaliacaoDomain call(String nomeRestaurante) {
         return avaliacaoRepository.buscarPorNomeRestaurante(nomeRestaurante);
     }
+     */
 }

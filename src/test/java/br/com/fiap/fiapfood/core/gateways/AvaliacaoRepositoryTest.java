@@ -21,26 +21,26 @@ class AvaliacaoRepositoryTest {
     @Test
     void testSalvar() {
         AvaliacaoDomain avaliacao = new AvaliacaoDomain();
-        avaliacao.setNomeRestaurante("Restaurante Teste");
+        avaliacao.setIdRestaurante("Restaurante Teste");
 
         AvaliacaoDomain avaliacaoSalva = avaliacaoRepository.salvar(avaliacao);
 
         assertNotNull(avaliacaoSalva);
         assertNotNull(avaliacaoSalva.getId());
-        assertEquals(avaliacao.getNomeRestaurante(), avaliacaoSalva.getNomeRestaurante());
+        assertEquals(avaliacao.getIdRestaurante(), avaliacaoSalva.getIdRestaurante());
     }
 
     @Test
     void testBuscarPorId() {
         AvaliacaoDomain avaliacao = new AvaliacaoDomain();
-        avaliacao.setNomeRestaurante("Restaurante Teste");
+        avaliacao.setIdRestaurante("Restaurante Teste");
         AvaliacaoDomain avaliacaoSalva = avaliacaoRepository.salvar(avaliacao);
 
         AvaliacaoDomain avaliacaoEncontrada = avaliacaoRepository.buscarPorId(avaliacaoSalva.getId());
 
         assertNotNull(avaliacaoEncontrada);
         assertEquals(avaliacaoSalva.getId(), avaliacaoEncontrada.getId());
-        assertEquals(avaliacao.getNomeRestaurante(), avaliacaoEncontrada.getNomeRestaurante());
+        assertEquals(avaliacao.getIdRestaurante(), avaliacaoEncontrada.getIdRestaurante());
     }
 
     @Test
@@ -54,7 +54,7 @@ class AvaliacaoRepositoryTest {
     @Test
     void testApagar() {
         AvaliacaoDomain avaliacao = new AvaliacaoDomain();
-        avaliacao.setNomeRestaurante("Restaurante Teste");
+        avaliacao.setIdRestaurante("Restaurante Teste");
         AvaliacaoDomain avaliacaoSalva = avaliacaoRepository.salvar(avaliacao);
 
         avaliacaoRepository.apagar(avaliacaoSalva.getId());
@@ -67,14 +67,14 @@ class AvaliacaoRepositoryTest {
     void testBuscarPorNomeRestaurante() {
         String nomeRestaurante = "Restaurante Teste";
         AvaliacaoDomain avaliacao = new AvaliacaoDomain();
-        avaliacao.setNomeRestaurante(nomeRestaurante);
+        avaliacao.setIdRestaurante(nomeRestaurante);
         AvaliacaoDomain avaliacaoSalva = avaliacaoRepository.salvar(avaliacao);
 
         AvaliacaoDomain avaliacaoEncontrada = avaliacaoRepository.buscarPorNomeRestaurante(nomeRestaurante);
 
         assertNotNull(avaliacaoEncontrada);
         assertEquals(avaliacaoSalva.getId(), avaliacaoEncontrada.getId());
-        assertEquals(nomeRestaurante, avaliacaoEncontrada.getNomeRestaurante());
+        assertEquals(nomeRestaurante, avaliacaoEncontrada.getIdRestaurante());
     }
 
     private static class DummyAvaliacaoRepository implements AvaliacaoRepository {
@@ -111,7 +111,7 @@ class AvaliacaoRepositoryTest {
         @Override
         public AvaliacaoDomain buscarPorNomeRestaurante(String nomeRestaurante) {
             for (AvaliacaoDomain avaliacao : avaliacoes) {
-                if (avaliacao.getNomeRestaurante().equals(nomeRestaurante)) {
+                if (avaliacao.getIdRestaurante().equals(nomeRestaurante)) {
                     return avaliacao;
                 }
             }

@@ -52,6 +52,7 @@ public class AvaliacaoRepositoryImp implements AvaliacaoRepository{
         throw new RuntimeException("Avaliação não encontrada");
     }
 
+    /*
     @Override
     public AvaliacaoDomain buscarPorNomeRestaurante(String nomeRestaurante) {
         Optional<Avaliacao> avaliacaoEntity = avaliacaoJPARepository.findByNomeRestaurante(nomeRestaurante);
@@ -59,5 +60,5 @@ public class AvaliacaoRepositoryImp implements AvaliacaoRepository{
             return AvaliacaoMapper.toAvaliacaoDomainFromModel(avaliacaoEntity.get());
         }
         throw new RuntimeException("Avaliação não encontrada");
-    }
+    }*/
 }

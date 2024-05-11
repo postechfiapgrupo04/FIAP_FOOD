@@ -62,9 +62,11 @@ public class AvaliacaoFacadeImp implements AvaliacaoFacade{
         apagarAvaliacao.call(id);
     }
 
+    /*
     @Override
     public AvaliacaoDTO buscarPorNomeRestaurante(String nomeRestaurante) {
         AvaliacaoDomain AvaliacaoDomain = buscarAvaliacaoPorNomeRestaurante.call(nomeRestaurante);
         return avaliacaoMapper.toAvaliacaoDTOFromDomain(AvaliacaoDomain);
     }
+     */
 }

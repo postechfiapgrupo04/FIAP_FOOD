@@ -18,6 +18,6 @@ INSERT INTO RESERVA (id, idusuario, idrestaurante, datareserva, quantidadepessoa
     VALUES
         ('1', '1', '1', '18:00:00', '4');
 
-INSERT INTO AVALIACAO (id, nome_restaurante, estrelas, descricao)
+INSERT INTO AVALIACAO (id, idusuario, idrestaurante, estrelas, descricao)
     VALUES
-        ('1', 'Juca Alemão', '5', 'Melhor Strudel da região!');
+        ('1', '1', '1', 5, 'Melhor Strudel da região!');
