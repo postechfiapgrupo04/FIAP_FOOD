@@ -13,6 +13,7 @@ import java.time.LocalTime;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -37,9 +38,9 @@ class BuscarRestaurantePorCozinhaTest {
     void deveBuscarPorCozinhaERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(buscarRestaurantePorCozinha.call(restauranteDomain.getTipoCozinha().toString())).thenReturn(restauranteDomain);
+        when(buscarRestaurantePorCozinha.call(restauranteDomain.getTipoCozinha())).thenReturn(restauranteDomain);
         // Act
-        RestauranteDomain restaurante = buscarRestaurantePorCozinha.call(restauranteDomain.getTipoCozinha().toString());
+        RestauranteDomain restaurante = buscarRestaurantePorCozinha.call(restauranteDomain.getTipoCozinha());
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
@@ -48,10 +49,10 @@ class BuscarRestaurantePorCozinhaTest {
     @Test
     void deveBuscarPorEnderecoERetornarExcecao() {
         // Arrange
-        when(buscarRestaurantePorCozinha.call(anyString())).thenThrow(RuntimeException.class);
+        when(buscarRestaurantePorCozinha.call(any(TipoCozinha.class))).thenThrow(RuntimeException.class);
         // Act
         //Assert
-        assertThatThrownBy(() -> buscarRestaurantePorCozinha.call(anyString()))
+        assertThatThrownBy(() -> buscarRestaurantePorCozinha.call(any(TipoCozinha.class)))
                 .isInstanceOf(RuntimeException.class);
     }
 
