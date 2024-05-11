@@ -141,9 +141,9 @@ class RestauranteRepositoryImplTest {
     void deveBuscarPorCozinhaERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        when(restauranteRepositoryImp.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha().toString())).thenReturn(restauranteDomain);
+        when(restauranteRepositoryImp.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha())).thenReturn(restauranteDomain);
         // Act
-        RestauranteDomain restaurante = restauranteRepositoryImp.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha().toString());
+        RestauranteDomain restaurante = restauranteRepositoryImp.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha());
         //Assert
         assertThat(restaurante).isEqualTo(restauranteDomain);
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
@@ -152,10 +152,10 @@ class RestauranteRepositoryImplTest {
     @Test
     void deveBuscarPorCozinhaERetornarExcecao() {
         // Arrange
-        when(restauranteRepositoryImp.buscarPorTipoCozinha(anyString())).thenThrow(RuntimeException.class);
+        when(restauranteRepositoryImp.buscarPorTipoCozinha(any(TipoCozinha.class))).thenThrow(RuntimeException.class);
         // Act
         //Assert
-        assertThatThrownBy(() -> restauranteRepositoryImp.buscarPorTipoCozinha(anyString()))
+        assertThatThrownBy(() -> restauranteRepositoryImp.buscarPorTipoCozinha(any(TipoCozinha.class)))
                 .isInstanceOf(RuntimeException.class);
     }
 
