@@ -21,7 +21,6 @@ public class EnderecoDomain {
     private String cidade;
     private String estado;
     private String cep;
-    private RestauranteDomain restaurante;
 
     @Override
     public boolean equals(Object o) {

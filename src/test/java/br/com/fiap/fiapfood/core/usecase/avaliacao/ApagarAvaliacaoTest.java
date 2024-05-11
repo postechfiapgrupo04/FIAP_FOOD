@@ -9,6 +9,7 @@ import static org.mockito.Mockito.times;
 
 class ApagarAvaliacaoTest {
 
+    /*Teste de Apagar*/
     @Test
     void testApagarAvaliacao() {
         // Arrange

@@ -33,9 +33,9 @@ public class AvaliacaoRestController {
                 .toList();
     }
 
-    @GetMapping("/cpf")
-    public AvaliacaoDTO buscarPorCPF(@RequestParam("cpf") String cpf) {
-        return avaliacaoFacade.buscarPorCPF(cpf);
+    @GetMapping("/restaurante/{nomeRestaurante}")
+    public AvaliacaoDTO buscarPorNomeRestaurante(@PathVariable("nomeRestaurante") String nomeRestaurante) {
+        return avaliacaoFacade.buscarPorNomeRestaurante(nomeRestaurante);
     }
 
     @DeleteMapping("/{id}")

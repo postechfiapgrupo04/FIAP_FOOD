@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 @Table(
         name = "avaliacao"
-        , uniqueConstraints = {@UniqueConstraint(name = "UK_AVALIACAO", columnNames = {"descricao", "estrelas", "cpf"})}
+        , uniqueConstraints = {@UniqueConstraint(name = "UK_AVALIACAO", columnNames = {"descricao", "estrelas", "nomeRestaurante"})}
 )
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,19 +30,19 @@ public class Avaliacao {
     @Column(name = "estrelas", nullable = false)
     private String estrelas;
 
-    @Column(name = "cpf", nullable = false)
-    private String cpf;
+    @Column(name = "nomeRestaurante", nullable = false)
+    private String nomeRestaurante;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Avaliacao avaliacao)) return false;
-        return Objects.equals(descricao, avaliacao.descricao) && Objects.equals(estrelas, avaliacao.estrelas) && Objects.equals(cpf, avaliacao.cpf);
+        return Objects.equals(descricao, avaliacao.descricao) && Objects.equals(estrelas, avaliacao.estrelas) && Objects.equals(nomeRestaurante, avaliacao.nomeRestaurante);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(descricao, estrelas, cpf);
+        return Objects.hash(descricao, estrelas, nomeRestaurante);
     }
 }

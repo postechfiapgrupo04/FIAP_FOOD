@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface AvaliacaoJPARepository extends JpaRepository<Avaliacao, Long> {
 
-    Optional<Avaliacao> findByCpf(String cpf);
+    Optional<Avaliacao> findByNomeRestaurante(String nomeRestaurante);
 
 }

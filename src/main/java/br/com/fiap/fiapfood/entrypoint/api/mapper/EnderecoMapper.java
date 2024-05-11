@@ -21,8 +21,7 @@ public class EnderecoMapper {
                 enderecoDomain.getBairro(),
                 enderecoDomain.getCidade(),
                 enderecoDomain.getEstado(),
-                enderecoDomain.getCep(),
-                RestauranteMapper.toRestauranteDTOFromDomain(enderecoDomain.getRestaurante())
+                enderecoDomain.getCep()
         );
 
     }
@@ -40,8 +39,7 @@ public class EnderecoMapper {
                 enderecoDTO.bairro(),
                 enderecoDTO.cidade(),
                 enderecoDTO.estado(),
-                enderecoDTO.cep(),
-                RestauranteMapper.toRestauranteDomainFromDTO(enderecoDTO.restaurante())
+                enderecoDTO.cep()
         );
     }
 
@@ -58,8 +56,7 @@ public class EnderecoMapper {
                 endereco.getBairro(),
                 endereco.getCidade(),
                 endereco.getEstado(),
-                endereco.getCep(),
-                RestauranteMapper.toRestauranteDomainFromModel(endereco.getRestaurante())
+                endereco.getCep()
         );
     }
 
@@ -76,8 +73,7 @@ public class EnderecoMapper {
                 enderecoDomain.getBairro(),
                 enderecoDomain.getCidade(),
                 enderecoDomain.getEstado(),
-                enderecoDomain.getCep(),
-                RestauranteMapper.toRestauranteModelFromDomain(enderecoDomain.getRestaurante())
+                enderecoDomain.getCep()
         );
     }
 }

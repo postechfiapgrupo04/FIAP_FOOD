@@ -53,8 +53,8 @@ public class AvaliacaoRepositoryImp implements AvaliacaoRepository{
     }
 
     @Override
-    public AvaliacaoDomain buscarPorCPF(String cpf) {
-        Optional<Avaliacao> avaliacaoEntity = avaliacaoJPARepository.findByCpf(cpf);
+    public AvaliacaoDomain buscarPorNomeRestaurante(String nomeRestaurante) {
+        Optional<Avaliacao> avaliacaoEntity = avaliacaoJPARepository.findByNomeRestaurante(nomeRestaurante);
         if (avaliacaoEntity.isPresent()) {
             return AvaliacaoMapper.toAvaliacaoDomainFromModel(avaliacaoEntity.get());
         }
