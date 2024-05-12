@@ -38,6 +38,12 @@ Os restaurantes podem gerenciar as reservas, visualizando e atualizando o status
 - Coverage (Cobertura de Testes)
 - Deploy no Render
 
+## Deploy
+
+O deploy foi configurado para ser feito automáticamente após o merge de alguma PR.
+Ele está junto das pipelines de verificação.
+Você pode conferir nesse link a versão "deployada" https://fiap-food-grupo04.onrender.com
+
 ## Como Executar
 
 1. Clone o repositório do projeto:
