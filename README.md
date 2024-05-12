@@ -1,5 +1,9 @@
 # FIAP FOOD
 
+## Equipe
+
+- Bruno Eduardo Martins Rosselli - RM353094
+
 ## Descrição
 
 FIAP FOOD é uma API Rest desenvolvida seguindo a metodologia de Clean Architecture. Ela fornece funcionalidades para cadastro de restaurantes, reserva de mesas, avaliações e comentários, busca de restaurantes e gerenciamento de reservas.
