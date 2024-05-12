@@ -54,5 +54,5 @@ cd fiap-food
 3. Execute o projeto:
 
 ```bash
-./mvnw spring-boot:run
+./gradlew spring-boot:run
 ```
