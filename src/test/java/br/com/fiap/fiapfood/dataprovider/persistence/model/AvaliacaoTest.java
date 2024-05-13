@@ -13,7 +13,7 @@ public class AvaliacaoTest {
         String estrelas = "5";
         String nomeRestaurante = "Nome do Restaurante";
 
-        Avaliacao avaliacao = new Avaliacao(id, descricao, estrelas, nomeRestaurante);
+        Avaliacao avaliacao = new Avaliacao(id, nomeRestaurante, estrelas, descricao);
 
         assertEquals(id, avaliacao.getId());
         assertEquals(descricao, avaliacao.getDescricao());
