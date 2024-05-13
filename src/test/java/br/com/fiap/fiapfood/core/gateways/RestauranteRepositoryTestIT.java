@@ -43,7 +43,7 @@ class RestauranteRepositoryTestIT {
     void deveBuscarPorIDERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteRepository.salvar(restauranteDomain);
+        restauranteDomain = restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorId(restauranteDomain.getId());
         //Assert
@@ -59,16 +59,6 @@ class RestauranteRepositoryTestIT {
         //Assert
         assertThatThrownBy(() -> restauranteRepository.buscarPorId(anyLong()))
                 .isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    void deveApagarRestaurante() {
-        // Arrange
-        RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteRepository.salvar(restauranteDomain);
-        restauranteRepository.apagar(restauranteDomain.getId());
-
-        verify(restauranteRepository, times(1)).apagar(anyLong());
     }
 
     @Test
@@ -97,10 +87,10 @@ class RestauranteRepositoryTestIT {
     void deveBuscarPorNomeERetornarExcecao() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteRepository.salvar(restauranteDomain);
+        restauranteDomain = restauranteRepository.salvar(restauranteDomain);
         // Act
         //Assert
-        assertThatThrownBy(() -> restauranteRepository.buscarPorNome(anyString()))
+        assertThatThrownBy(() -> restauranteRepository.buscarPorNome("diego"))
                 .isInstanceOf(RuntimeException.class);
         apagar(restauranteDomain.getId());
     }
@@ -109,7 +99,7 @@ class RestauranteRepositoryTestIT {
     void deveBuscarPorEnderecoERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteRepository.salvar(restauranteDomain);
+        restauranteDomain = restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorEndereco(restauranteDomain.getEndereco().getLogradouro());
         //Assert
@@ -131,7 +121,7 @@ class RestauranteRepositoryTestIT {
     void deveBuscarPorCozinhaERetornarRestaurante() {
         // Arrange
         RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteRepository.salvar(restauranteDomain);
+        restauranteDomain = restauranteRepository.salvar(restauranteDomain);
         // Act
         RestauranteDomain restaurante = restauranteRepository.buscarPorTipoCozinha(restauranteDomain.getTipoCozinha());
         //Assert

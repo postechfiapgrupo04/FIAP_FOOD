@@ -12,6 +12,7 @@ import br.com.fiap.fiapfood.entrypoint.api.mapper.RestauranteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -23,6 +24,8 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
 
     @Override
     public RestauranteDomain salvar(RestauranteDomain restaurante) {
+        Endereco endereco2 = EnderecoMapper.toEnderecoModelFromDomain(restaurante.getEndereco());
+        List<Endereco> enderecos = enderecoJPARepository.findAll();
         Endereco endereco = enderecoJPARepository.save(EnderecoMapper.toEnderecoModelFromDomain(restaurante.getEndereco()));
         Restaurante restauranteModel = RestauranteMapper.toRestauranteModelFromDomain(restaurante);
         restauranteModel.setEndereco(endereco);
@@ -42,8 +45,11 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     @Override
     public void apagar(Long id) {
         Optional<Restaurante> restauranteEntity = restauranteJPARepository.findById(id);
-        restauranteEntity.ifPresent(restauranteJPARepository::delete);
-        throw new RuntimeException("Restaurante não encontrado");
+        if (!restauranteEntity.isPresent()) {
+            throw new RuntimeException("Restaurante não encontrado");
+        }
+        restauranteJPARepository.delete(restauranteEntity.get());
+
     }
 
     @Override
