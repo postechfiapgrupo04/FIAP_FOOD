@@ -34,6 +34,9 @@ public class Usuario {
     @Column(name = "cpf", nullable = false)
     private String cpf;
 
+    /*@OneToMany(mappedBy = "usuario")
+    private List<Avaliacao> avaliacoes;*/
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

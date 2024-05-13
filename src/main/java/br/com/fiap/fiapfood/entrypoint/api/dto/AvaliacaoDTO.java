@@ -11,8 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AvaliacaoDTO {
     private Long id;
-    private RestauranteDTO restaurante;
-    private UsuarioDTO usuario;
-    private int estrelas;
     private String descricao;
+    private String estrelas;
+    private String nomeRestaurante;
 }

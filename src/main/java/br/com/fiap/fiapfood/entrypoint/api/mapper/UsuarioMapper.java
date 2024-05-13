@@ -55,6 +55,9 @@ public class UsuarioMapper {
                 usuarioDomain.getId(),
                 usuarioDomain.getNome(),
                 usuarioDomain.getEmail(),
-                usuarioDomain.getCpf());
+                usuarioDomain.getCpf(),
+                //null,
+                null
+        );
     }
 }
