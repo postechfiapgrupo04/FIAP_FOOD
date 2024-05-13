@@ -20,4 +20,6 @@ public interface ReservaRepository {
     public List<ReservaDomain> buscarPorDataReserva(LocalDate dataReserva);
 
     public List<ReservaDomain> buscarPorRestaurante(RestauranteDomain restaurante);
+
+    List<ReservaDomain> buscarTodasReservas();
 }

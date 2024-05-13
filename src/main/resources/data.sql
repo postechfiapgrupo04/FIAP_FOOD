@@ -1,4 +1,4 @@
-INSERT INTO USUARIO (id, nome, email, cpf)
+INSERT INTO USUARIO
 VALUES
     ('1', 'Bruno', 'bruno@fiap.com', '01234567890'),
     ('2', 'Milton', 'milton@fiap.com', '01234567891'),
@@ -16,7 +16,7 @@ INSERT INTO RESTAURANTE (id, nome, tipocozinha, horaabertura, horafechamento, ca
 
 INSERT INTO RESERVA (id, idusuario, idrestaurante, datareserva, quantidadepessoas)
     VALUES
-        ('1', '1', '1', '18:00:00', '4');
+        ('1', '1', '1', ' 2023-05-13 18:00:00', '4');
 
 INSERT INTO AVALIACAO (id, idusuario, idrestaurante, estrelas, descricao)
     VALUES
