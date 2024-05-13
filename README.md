@@ -3,6 +3,7 @@
 ## Equipe
 
 - Bruno Eduardo Martins Rosselli - RM353094
+- Diego da Silva Nassula - RM353126
 
 ## Descrição
 
