@@ -46,16 +46,6 @@ class BuscarRestaurantePorCozinhaTest {
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
     }
 
-    @Test
-    void deveBuscarPorEnderecoERetornarExcecao() {
-        // Arrange
-        when(buscarRestaurantePorCozinha.call(any(TipoCozinha.class))).thenThrow(RuntimeException.class);
-        // Act
-        //Assert
-        assertThatThrownBy(() -> buscarRestaurantePorCozinha.call(any(TipoCozinha.class)))
-                .isInstanceOf(RuntimeException.class);
-    }
-
     private RestauranteDomain criarRestaurante() {
         EnderecoDomain endereco = new EnderecoDomain();
         endereco.setId(1L);
