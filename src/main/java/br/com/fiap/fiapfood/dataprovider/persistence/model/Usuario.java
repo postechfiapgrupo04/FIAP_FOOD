@@ -34,9 +34,6 @@ public class Usuario {
     @Column(name = "cpf", nullable = false)
     private String cpf;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Reserva> reservas;
-
     /*@OneToMany(mappedBy = "usuario")
     private List<Avaliacao> avaliacoes;*/
 
