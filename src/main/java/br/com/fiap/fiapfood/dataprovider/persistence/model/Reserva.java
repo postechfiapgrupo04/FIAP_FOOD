@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -22,10 +23,7 @@ public class Reserva {
     private Long id;
 
     @Column(name = "datareserva", nullable = false)
-    private LocalTime dataReserva;
-
-    @Column(name = "quantidadepessoas", nullable = false)
-    private int quantidadePessoas;
+    private LocalDateTime dataReserva;
 
     @ManyToOne
     @JoinColumn(name = "idrestaurante")
@@ -35,16 +33,6 @@ public class Reserva {
     @JoinColumn(name = "idusuario")
     private Usuario usuario;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Reserva that = (Reserva) o;
-        return Objects.equals(id, that.id) && Objects.equals(dataReserva, that.dataReserva) && Objects.equals(restaurante, that.restaurante) && Objects.equals(usuario, that.usuario);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, dataReserva, restaurante, usuario);
-    }
+    @Column(name = "quantidadepessoas", nullable = false)
+    private int quantidadePessoas;
 }

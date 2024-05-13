@@ -26,8 +26,8 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String cep;
-    @OneToOne(mappedBy = "endereco")
-    private Restaurante restaurante;
+//    @OneToOne(mappedBy = "endereco")
+//    private Restaurante restaurante;
 
     @Override
     public boolean equals(Object o) {

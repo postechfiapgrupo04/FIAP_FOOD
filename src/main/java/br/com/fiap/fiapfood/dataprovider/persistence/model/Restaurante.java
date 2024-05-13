@@ -32,8 +32,8 @@ public class Restaurante {
     @OneToOne
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "restaurante")
-    private List<Reserva> reserva;
+//    @OneToMany(mappedBy = "restaurante")
+//    private List<Reserva> reserva;
 
     @Column(name = "tipocozinha", nullable = false)
     @Enumerated(EnumType.STRING)
