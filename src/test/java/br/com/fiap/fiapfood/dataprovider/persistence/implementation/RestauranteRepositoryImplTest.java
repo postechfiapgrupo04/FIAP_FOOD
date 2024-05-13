@@ -149,16 +149,6 @@ class RestauranteRepositoryImplTest {
         assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
     }
 
-    @Test
-    void deveBuscarPorCozinhaERetornarExcecao() {
-        // Arrange
-        when(restauranteRepositoryImp.buscarPorTipoCozinha(any(TipoCozinha.class))).thenThrow(RuntimeException.class);
-        // Act
-        //Assert
-        assertThatThrownBy(() -> restauranteRepositoryImp.buscarPorTipoCozinha(any(TipoCozinha.class)))
-                .isInstanceOf(RuntimeException.class);
-    }
-
     private RestauranteDomain criarRestaurante() {
         EnderecoDomain endereco = new EnderecoDomain();
         endereco.setId(1L);

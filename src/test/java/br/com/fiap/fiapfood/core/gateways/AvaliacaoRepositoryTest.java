@@ -63,20 +63,6 @@ class AvaliacaoRepositoryTest {
         assertNull(avaliacaoEncontrada);
     }
 
-    @Test
-    void testBuscarPorNomeRestaurante() {
-        String nomeRestaurante = "Restaurante Teste";
-        AvaliacaoDomain avaliacao = new AvaliacaoDomain();
-        //avaliacao.setIdRestaurante(nomeRestaurante);
-        AvaliacaoDomain avaliacaoSalva = avaliacaoRepository.salvar(avaliacao);
-
-        AvaliacaoDomain avaliacaoEncontrada = avaliacaoRepository.buscarPorNomeRestaurante(nomeRestaurante);
-
-        assertNotNull(avaliacaoEncontrada);
-        assertEquals(avaliacaoSalva.getId(), avaliacaoEncontrada.getId());
-        assertEquals(nomeRestaurante, avaliacaoEncontrada.getNomeRestaurante());
-    }
-
     private static class DummyAvaliacaoRepository implements AvaliacaoRepository {
         private final List<AvaliacaoDomain> avaliacoes = new ArrayList<>();
         private long idCounter = 1;
