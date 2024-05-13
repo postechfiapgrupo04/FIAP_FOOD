@@ -14,10 +14,10 @@ import java.util.Objects;
 @Entity
 @Table(
         name = "avaliacao"
-        , uniqueConstraints = {@UniqueConstraint(name = "UK_AVALIACAO", columnNames = {"descricao", "estrelas", "idRestaurante"})}
+        , uniqueConstraints = {@UniqueConstraint(name = "UK_AVALIACAO", columnNames = {"descricao", "estrelas", "nomeRestaurante"})}
 )
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Avaliacao {
 
     @Id
@@ -25,18 +25,19 @@ public class Avaliacao {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "idrestaurante")
-    private Restaurante restaurante;
+    @Column(name= "nomerestaurante")
+    private String nomeRestaurante;
 
+    /*
     @ManyToOne
     @JoinColumn(name = "idusuario")
     private Usuario usuario;
+     */
 
     @Min(1)
     @Min(5)
     @Column(name = "estrelas", nullable = false)
-    private int estrelas;
+    private String estrelas;
 
     @Column(name = "descricao", nullable = false)
     private String descricao;
@@ -45,12 +46,12 @@ public class Avaliacao {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Avaliacao avaliacao)) return false;
-        return Objects.equals(descricao, avaliacao.descricao) && Objects.equals(estrelas, avaliacao.estrelas) && Objects.equals(restaurante, avaliacao.restaurante);
+        return Objects.equals(descricao, avaliacao.descricao) && Objects.equals(estrelas, avaliacao.estrelas) && Objects.equals(nomeRestaurante, avaliacao.nomeRestaurante);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(descricao, estrelas, restaurante);
+        return Objects.hash(descricao, estrelas, nomeRestaurante);
     }
 }

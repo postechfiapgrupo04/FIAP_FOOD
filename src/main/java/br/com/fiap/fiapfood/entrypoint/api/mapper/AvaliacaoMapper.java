@@ -14,8 +14,7 @@ public class AvaliacaoMapper {
 
         AvaliacaoDTO avaliacaoDTO = new AvaliacaoDTO(
                 avaliacaoDomain.getId(),
-                RestauranteMapper.toRestauranteDTOFromDomain(avaliacaoDomain.getIdRestaurante()),
-                UsuarioMapper.toUsuarioDTOFromDomain(avaliacaoDomain.getIdUsuario()),
+                avaliacaoDomain.getNomeRestaurante(),
                 avaliacaoDomain.getEstrelas(),
                 avaliacaoDomain.getDescricao()
         );
@@ -30,8 +29,7 @@ public class AvaliacaoMapper {
 
         AvaliacaoDomain avaliacaoDomain = new AvaliacaoDomain(
                 avaliacaoDTO.getId(),
-                RestauranteMapper.toRestauranteDomainFromDTO(avaliacaoDTO.getRestaurante()),
-                UsuarioMapper.toUsuarioDomainFromDTO(avaliacaoDTO.getUsuario()),
+                avaliacaoDTO.getNomeRestaurante(),
                 avaliacaoDTO.getEstrelas(),
                 avaliacaoDTO.getDescricao()
         );
@@ -46,10 +44,9 @@ public class AvaliacaoMapper {
 
         AvaliacaoDomain avaliacaoDomain = new AvaliacaoDomain(
                 avaliacao.getId(),
-                RestauranteMapper.toRestauranteDomainFromModel(avaliacao.getRestaurante()),
-                UsuarioMapper.toUsuarioDomainFromModel(avaliacao.getUsuario()),
-                avaliacao.getEstrelas(),
-                avaliacao.getDescricao()
+                avaliacao.getNomeRestaurante(),
+                avaliacao.getDescricao(),
+                avaliacao.getEstrelas()
         );
 
         return avaliacaoDomain;
@@ -62,10 +59,9 @@ public class AvaliacaoMapper {
 
         Avaliacao avaliacao = new Avaliacao(
                 avaliacaoDomain.getId(),
-                RestauranteMapper.toRestauranteModelFromDomain(avaliacaoDomain.getIdRestaurante()),
-                UsuarioMapper.toUsuarioModelFromDomain(avaliacaoDomain.getIdUsuario()),
+                avaliacaoDomain.getDescricao(),
                 avaliacaoDomain.getEstrelas(),
-                avaliacaoDomain.getDescricao()
+                avaliacaoDomain.getNomeRestaurante()
         );
 
         return avaliacao;

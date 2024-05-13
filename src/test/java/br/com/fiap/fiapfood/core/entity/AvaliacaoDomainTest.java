@@ -18,7 +18,7 @@ class AvaliacaoDomainTest {
         assertEquals(id, avaliacao.getId());
         assertEquals(descricao, avaliacao.getDescricao());
         assertEquals(estrelas, avaliacao.getEstrelas());
-        assertEquals(nomeRestaurante, avaliacao.getIdRestaurante());
+        assertEquals(nomeRestaurante, avaliacao.getNomeRestaurante());
     }
 
     @Test
@@ -28,7 +28,7 @@ class AvaliacaoDomainTest {
         assertNull(avaliacao.getId());
         assertNull(avaliacao.getDescricao());
         assertNull(avaliacao.getEstrelas());
-        assertNull(avaliacao.getIdRestaurante());
+        assertNull(avaliacao.getNomeRestaurante());
     }
 
 }

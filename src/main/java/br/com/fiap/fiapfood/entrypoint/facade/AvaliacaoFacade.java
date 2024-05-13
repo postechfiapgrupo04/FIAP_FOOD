@@ -14,6 +14,6 @@ public interface AvaliacaoFacade {
 
     void apagar(Long id);
 
-    //AvaliacaoDTO buscarPorNomeRestaurante(String nomeRestaurante);
+    AvaliacaoDTO buscarPorNomeRestaurante(String nomeRestaurante);
 
 }

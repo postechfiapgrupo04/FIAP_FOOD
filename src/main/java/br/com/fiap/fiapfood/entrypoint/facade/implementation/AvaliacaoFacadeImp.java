@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class AvaliacaoFacadeImp implements AvaliacaoFacade{
+public class AvaliacaoFacadeImp implements AvaliacaoFacade {
 
     private final SalvarAvaliacao salvarAvaliacao;
     private final BuscarAvaliacaoPorID buscarAvaliacaoPorID;
@@ -31,7 +31,7 @@ public class AvaliacaoFacadeImp implements AvaliacaoFacade{
     ) {
         this.salvarAvaliacao = salvarAvaliacao;
         this.buscarAvaliacaoPorID = buscarAvaliacaoPorID;
-        this.buscarTodasAvaliacaos =  buscarTodasAvaliacaos;
+        this.buscarTodasAvaliacaos = buscarTodasAvaliacaos;
         this.buscarAvaliacaoPorNomeRestaurante = buscarAvaliacaoPorNomeRestaurante;
         this.apagarAvaliacao = apagarAvaliacao;
         this.avaliacaoMapper = avaliacaoMapper;
@@ -62,11 +62,9 @@ public class AvaliacaoFacadeImp implements AvaliacaoFacade{
         apagarAvaliacao.call(id);
     }
 
-    /*
     @Override
     public AvaliacaoDTO buscarPorNomeRestaurante(String nomeRestaurante) {
         AvaliacaoDomain AvaliacaoDomain = buscarAvaliacaoPorNomeRestaurante.call(nomeRestaurante);
         return avaliacaoMapper.toAvaliacaoDTOFromDomain(AvaliacaoDomain);
     }
-     */
 }

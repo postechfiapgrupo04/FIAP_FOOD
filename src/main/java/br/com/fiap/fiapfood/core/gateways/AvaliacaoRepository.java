@@ -13,5 +13,5 @@ public interface AvaliacaoRepository {
 
     void apagar(Long id);
 
-    //AvaliacaoDomain buscarPorNomeRestaurante(String nomeRestaurante);
+    AvaliacaoDomain buscarPorNomeRestaurante(String nomeRestaurante);
 }
