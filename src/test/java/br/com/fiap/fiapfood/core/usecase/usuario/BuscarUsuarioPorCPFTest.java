@@ -1,6 +1,7 @@
 package br.com.fiap.fiapfood.core.usecase.usuario;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ class BuscarUsuarioPorCPFTest {
     AutoCloseable openMocks;
 
     @Mock
-    private BuscarUsuarioPorCPF buscarUsuarioPorCPF;
+    private UsuarioRepository usuarioRepository;
 
     @BeforeEach
     void setup() {
@@ -35,13 +36,14 @@ class BuscarUsuarioPorCPFTest {
     void call() {
         //Arrange
         UsuarioDomain usuarioDomain = usuarioMock;
-        when(buscarUsuarioPorCPF.call(anyString())).thenReturn(usuarioDomain);
+        BuscarUsuarioPorCPF buscarUsuarioPorCPF = new BuscarUsuarioPorCPF(usuarioRepository);
+        when(usuarioRepository.buscarPorCPF(anyString())).thenReturn(usuarioDomain);
         //Act
         UsuarioDomain usuario = buscarUsuarioPorCPF.call(usuarioDomain.getCpf());
         //Assert
         assertThat(usuario).isEqualTo(usuarioDomain);
         assertThat(usuario.getCpf()).isEqualTo(usuarioDomain.getCpf());
-        verify(buscarUsuarioPorCPF, times(1)).call(anyString());
+        verify(usuarioRepository, times(1)).buscarPorCPF(anyString());
     }
 
     UsuarioDomain usuarioMock = new UsuarioDomain(

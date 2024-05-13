@@ -52,12 +52,13 @@ public class AvaliacaoRepositoryImp implements AvaliacaoRepository{
         throw new RuntimeException("Avaliação não encontrada");
     }
 
+    /*
     @Override
-    public AvaliacaoDomain buscarPorCPF(String cpf) {
-        Optional<Avaliacao> avaliacaoEntity = avaliacaoJPARepository.findByCpf(cpf);
+    public AvaliacaoDomain buscarPorNomeRestaurante(String nomeRestaurante) {
+        Optional<Avaliacao> avaliacaoEntity = avaliacaoJPARepository.findByNomeRestaurante(nomeRestaurante);
         if (avaliacaoEntity.isPresent()) {
             return AvaliacaoMapper.toAvaliacaoDomainFromModel(avaliacaoEntity.get());
         }
         throw new RuntimeException("Avaliação não encontrada");
-    }
+    }*/
 }

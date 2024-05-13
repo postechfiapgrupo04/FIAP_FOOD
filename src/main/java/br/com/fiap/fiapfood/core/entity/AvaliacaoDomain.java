@@ -5,15 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class AvaliacaoDomain {
     private Long id;
+    private RestauranteDomain idRestaurante;
+    private UsuarioDomain idUsuario;
+    private int estrelas;
     private String descricao;
-    private String estrelas;
-    private String cpf;
 }

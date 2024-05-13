@@ -1,10 +1,12 @@
 package br.com.fiap.fiapfood.dataprovider.persistence.implementation;
 
 import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
+import br.com.fiap.fiapfood.core.exception.NotFoundException;
 import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
 import br.com.fiap.fiapfood.dataprovider.persistence.model.Usuario;
 import br.com.fiap.fiapfood.dataprovider.persistence.repository.UsuarioJPARepository;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -48,10 +50,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public void apagar(Long id) {
         Optional<Usuario> usuarioEntity = usuarioJPARepository.findById(id);
-        if (usuarioEntity.isPresent()) {
-            usuarioJPARepository.delete(usuarioEntity.get());
-        }
-        throw new RuntimeException("Usuário não encontrado");
+        usuarioEntity.ifPresentOrElse(usuario -> usuarioJPARepository.deleteById(usuario.getId()), () -> {
+            throw new NotFoundException("Usuário não encontrado");
+        });
     }
 
     @Override

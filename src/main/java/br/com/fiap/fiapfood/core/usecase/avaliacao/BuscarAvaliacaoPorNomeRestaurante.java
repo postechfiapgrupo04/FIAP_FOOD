@@ -5,14 +5,16 @@ import br.com.fiap.fiapfood.core.gateways.AvaliacaoRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BuscarAvaliacaoPorCPF {
+public class BuscarAvaliacaoPorNomeRestaurante {
     private final AvaliacaoRepository avaliacaoRepository;
 
-    public BuscarAvaliacaoPorCPF(AvaliacaoRepository avaliacaoRepository) {
+    public BuscarAvaliacaoPorNomeRestaurante(AvaliacaoRepository avaliacaoRepository) {
         this.avaliacaoRepository = avaliacaoRepository;
     }
 
-    public AvaliacaoDomain call(String cpf) {
-        return avaliacaoRepository.buscarPorCPF(cpf);
+    /*
+    public AvaliacaoDomain call(String nomeRestaurante) {
+        return avaliacaoRepository.buscarPorNomeRestaurante(nomeRestaurante);
     }
+     */
 }

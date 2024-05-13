@@ -1,5 +1,6 @@
 package br.com.fiap.fiapfood.entrypoint.facade.implementation;
 
+import br.com.fiap.fiapfood.core.enums.TipoCozinha;
 import br.com.fiap.fiapfood.core.usecase.restaurante.*;
 import br.com.fiap.fiapfood.entrypoint.api.dto.RestauranteDTO;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.RestauranteMapper;
@@ -54,7 +55,7 @@ public class RestauranteFacadeImp implements RestauranteFacade {
     }
 
     @Override
-    public RestauranteDTO buscarPorTipoCozinha(String tipoCozinha) {
+    public RestauranteDTO buscarPorTipoCozinha(TipoCozinha tipoCozinha) {
         return RestauranteMapper.toRestauranteDTOFromDomain(buscarRestaurantePorCozinha.call(tipoCozinha));
     }
 }

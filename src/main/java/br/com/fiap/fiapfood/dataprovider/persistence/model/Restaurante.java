@@ -35,6 +35,9 @@ public class Restaurante {
 //    @OneToMany(mappedBy = "restaurante")
 //    private List<Reserva> reserva;
 
+    @OneToMany(mappedBy = "restaurante")
+    private List<Avaliacao> avaliacoes;
+
     @Column(name = "tipocozinha", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoCozinha tipoCozinha;

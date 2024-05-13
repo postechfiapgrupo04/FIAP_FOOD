@@ -14,10 +14,11 @@ public class AvaliacaoMapper {
 
         AvaliacaoDTO avaliacaoDTO = new AvaliacaoDTO(
                 avaliacaoDomain.getId(),
-                avaliacaoDomain.getDescricao(),
+                RestauranteMapper.toRestauranteDTOFromDomain(avaliacaoDomain.getIdRestaurante()),
+                UsuarioMapper.toUsuarioDTOFromDomain(avaliacaoDomain.getIdUsuario()),
                 avaliacaoDomain.getEstrelas(),
-                avaliacaoDomain.getCpf()
-                );
+                avaliacaoDomain.getDescricao()
+        );
 
         return avaliacaoDTO;
     }
@@ -29,10 +30,11 @@ public class AvaliacaoMapper {
 
         AvaliacaoDomain avaliacaoDomain = new AvaliacaoDomain(
                 avaliacaoDTO.getId(),
-                avaliacaoDTO.getDescricao(),
+                RestauranteMapper.toRestauranteDomainFromDTO(avaliacaoDTO.getRestaurante()),
+                UsuarioMapper.toUsuarioDomainFromDTO(avaliacaoDTO.getUsuario()),
                 avaliacaoDTO.getEstrelas(),
-                avaliacaoDTO.getCpf()
-                );
+                avaliacaoDTO.getDescricao()
+        );
 
         return avaliacaoDomain;
     }
@@ -44,10 +46,11 @@ public class AvaliacaoMapper {
 
         AvaliacaoDomain avaliacaoDomain = new AvaliacaoDomain(
                 avaliacao.getId(),
-                avaliacao.getDescricao(),
+                RestauranteMapper.toRestauranteDomainFromModel(avaliacao.getRestaurante()),
+                UsuarioMapper.toUsuarioDomainFromModel(avaliacao.getUsuario()),
                 avaliacao.getEstrelas(),
-                avaliacao.getCpf()
-                );
+                avaliacao.getDescricao()
+        );
 
         return avaliacaoDomain;
     }
@@ -59,10 +62,11 @@ public class AvaliacaoMapper {
 
         Avaliacao avaliacao = new Avaliacao(
                 avaliacaoDomain.getId(),
-                avaliacaoDomain.getDescricao(),
+                RestauranteMapper.toRestauranteModelFromDomain(avaliacaoDomain.getIdRestaurante()),
+                UsuarioMapper.toUsuarioModelFromDomain(avaliacaoDomain.getIdUsuario()),
                 avaliacaoDomain.getEstrelas(),
-                avaliacaoDomain.getCpf()
-                );
+                avaliacaoDomain.getDescricao()
+        );
 
         return avaliacao;
     }

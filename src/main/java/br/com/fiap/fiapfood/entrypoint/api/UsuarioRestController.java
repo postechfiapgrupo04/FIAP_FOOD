@@ -1,16 +1,14 @@
 package br.com.fiap.fiapfood.entrypoint.api;
 
 import br.com.fiap.fiapfood.entrypoint.facade.UsuarioFacade;
-import br.com.fiap.fiapfood.core.entity.UsuarioDomain;
 import br.com.fiap.fiapfood.entrypoint.api.dto.UsuarioDTO;
-import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 @AllArgsConstructor
 public class UsuarioRestController {
 
@@ -34,8 +32,8 @@ public class UsuarioRestController {
                 .toList();
     }
 
-    @GetMapping("/cpf")
-    public UsuarioDTO buscarPorCPF(@RequestParam("cpf") String cpf) {
+    @GetMapping("/cpf/{cpf}")
+       public UsuarioDTO buscarPorCPF(@PathVariable String cpf) {
        return usuarioFacade.buscarPorCPF(cpf);
     }
 

@@ -1,12 +1,15 @@
 package br.com.fiap.fiapfood.core.usecase.usuario;
 
+import br.com.fiap.fiapfood.core.gateways.AvaliacaoRepository;
 import br.com.fiap.fiapfood.core.gateways.UsuarioRepository;
+import br.com.fiap.fiapfood.core.usecase.avaliacao.ApagarAvaliacao;
 import br.com.fiap.fiapfood.entrypoint.api.dto.UsuarioDTO;
 import br.com.fiap.fiapfood.entrypoint.api.mapper.UsuarioMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ class ApagarUsuarioTest {
     AutoCloseable openMocks;
 
     @Mock
-    private ApagarUsuario apagarUsuario;
+    private UsuarioRepository usuarioRepository;
 
     @BeforeEach
     void setup() {
@@ -35,11 +38,13 @@ class ApagarUsuarioTest {
     void call() {
         //Arrange
         UsuarioDTO usuarioDTO = usuarioMock;
-        doNothing().when(apagarUsuario).call(anyLong());
+        ApagarUsuario apagarAvaliacao = new ApagarUsuario(usuarioRepository);
+
+        doNothing().when(usuarioRepository).apagar(anyLong());
         //Act
-        apagarUsuario.call(usuarioDTO.getId());
+        apagarAvaliacao.call(usuarioDTO.getId());
         //Assert
-        verify(apagarUsuario, times(1)).call(anyLong());
+        verify(usuarioRepository, times(1)).apagar(anyLong());
     }
 
     UsuarioDTO usuarioMock = new UsuarioDTO(
