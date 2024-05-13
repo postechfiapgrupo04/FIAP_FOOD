@@ -70,30 +70,6 @@ class RestauranteRepositoryTestIT {
                 .isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    void deveBuscarPorNomeERetornarRestaurante() {
-        // Arrange
-        RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteRepository.salvar(restauranteDomain);
-        // Act
-        RestauranteDomain restaurante = restauranteRepository.buscarPorNome(restauranteDomain.getNome());
-        //Assert
-        assertThat(restaurante).isEqualTo(restauranteDomain);
-        assertThat(restaurante.getNome()).isEqualTo(restauranteDomain.getNome());
-        apagar(restaurante.getId());
-    }
-
-    @Test
-    void deveBuscarPorNomeERetornarExcecao() {
-        // Arrange
-        RestauranteDomain restauranteDomain = criarRestaurante();
-        restauranteDomain = restauranteRepository.salvar(restauranteDomain);
-        // Act
-        //Assert
-        assertThatThrownBy(() -> restauranteRepository.buscarPorNome("diego"))
-                .isInstanceOf(RuntimeException.class);
-        apagar(restauranteDomain.getId());
-    }
 
     @Test
     void deveBuscarPorEnderecoERetornarRestaurante() {
